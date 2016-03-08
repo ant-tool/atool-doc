@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <ul>
+      <%
+        var baba = htmlWebpackPlugin.options.link;
+        var keys = Object.keys(baba);
+        for(var i=0; i<keys.length; i++) {%>
+          <li><a href="./<%= keys[i]%>.html"><%= keys[i] %></a></li>
+      <% } %>
+    </ul>
+  </body>
+</html>
