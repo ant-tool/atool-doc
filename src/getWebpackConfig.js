@@ -67,17 +67,11 @@ export default function(source, dest) {
       link: entry,
     })], Object.keys(entry).map(file => new HtmlWebpackPlugin({
       filename: `${file}.html`,
-      template: join(root, '/tpl/every.ejs'),
+      template: join(root, '/tpl/realEvery.ejs'),
       inject: 'body',
       chunks: ['common', file],
       title: `${path.basename(file)}`,
-      code: (function(){
-        // const str = './examples/area.js';
-        // console.log(readFileSync(str, 'utf8'));
-        // const str = path.resolve(cwd, entry[file]);
-        const str = './xx.js';
-        return ('!!raw!' + str);
-      })(),
+      code: './' + path.basename(entry[file]),
       path: path.resolve(cwd, entry[file]),
     })));
 

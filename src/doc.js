@@ -29,8 +29,13 @@ const getFunction = function (files) {
 export default function (options) {
   const { source, dest, cwd } = options;
 
+
   const webpackConfig = getWebpackConfig(source, dest);
   // console.log(webpackConfig);
+  fs.writeFileSync(
+    path.join(__dirname, '../tpl/realEvery.ejs'),
+    fs.readFileSync(path.join(__dirname, '../tpl/every.ejs'), 'utf8').replace('xxxxxxxx', path.join(cwd, source))
+  );
 
   // config.module.loaders.push({
   //   test: /\.md$/,

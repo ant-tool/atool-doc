@@ -8,8 +8,7 @@
     <h1><%= htmlWebpackPlugin.options.title %></h1>
     <h2>dd223</h2>
     <pre>
-      <%= htmlWebpackPlugin.options.code %>
-      <%= require('!!raw!./xx.js') %>
+      <%= require.context('!!raw!' + 'xxxxxxxx')(htmlWebpackPlugin.options.code) %>
     </pre>
   </body>
 </html>
