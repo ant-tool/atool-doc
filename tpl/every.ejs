@@ -6,9 +6,6 @@
   </head>
   <body>
     <h1><%= htmlWebpackPlugin.options.title %></h1>
-    <h2>dd223</h2>
-    <pre>
-      <%= require.context('!!raw!' + 'xxxxxxxx')(htmlWebpackPlugin.options.code) %>
-    </pre>
+    <pre><%= require.context('!!raw!' + 'thisIsCwd')(htmlWebpackPlugin.options.path) %></pre>
   </body>
 </html>

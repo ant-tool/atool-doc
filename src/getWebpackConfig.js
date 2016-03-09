@@ -1,6 +1,7 @@
 import path, { join } from 'path';
 import { readdirSync, readFileSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
+import { ProgressPlugin } from 'atool-build/lib/webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const cwd = process.cwd();
@@ -52,7 +53,7 @@ export default function(source, dest) {
       root: join(__dirname, '../node_modules'),
     },
     output: {
-      path: dest,
+      path: path.resolve(cwd, dest),
       filename: '[name].js',
     }
   };
@@ -65,15 +66,26 @@ export default function(source, dest) {
       chunks: [],
       title: 'Custom template',
       link: entry,
-    })], Object.keys(entry).map(file => new HtmlWebpackPlugin({
-      filename: `${file}.html`,
-      template: join(root, '/tpl/realEvery.ejs'),
-      inject: 'body',
-      chunks: ['common', file],
-      title: `${path.basename(file)}`,
-      code: './' + path.basename(entry[file]),
-      path: path.resolve(cwd, entry[file]),
-    })));
+    })
+  ], Object.keys(entry).map(file => new HtmlWebpackPlugin({
+    filename: `${file}.html`,
+    template: join(root, '/tpl/realEvery.ejs'),
+    inject: 'body',
+    chunks: ['common', file],
+    title: `${path.basename(file)}`,
+    path: './' + path.basename(entry[file]),
+  })), [
+    new ProgressPlugin((percentage, msg) => {
+      const stream = process.stderr;
+      if (stream.isTTY && percentage < 0.71) {
+        stream.cursorTo(0);
+        stream.write('📦  ' + msg);
+        stream.clearLine(1);
+      } else if (percentage === 1) {
+        console.log('\nwebpack: bundle build is now finished.');
+      }
+    })
+  ]);
 
   return webpackConfig;
 }
