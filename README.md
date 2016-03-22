@@ -8,6 +8,34 @@
 
 Static demo generator based on [atool-build](https://github.com/ant-tool/atool-build) and [dora](https://github.com/dora-js/dora)
 
+**before**
+```
+./
+├── README.md
+└── examples
+    ├── a.js
+    ├── a.html
+    └── b.md
+```
+
+**after**
+```
+./
+├── README.md
+├── __site
+│   ├── common.js
+│   ├── examples
+│   │   ├── a.html
+│   │   ├── a.js
+│   │   ├── b.html
+│   │   ├── b.js
+│   └── index.html
+└── examples
+    ├── a.js
+    ├── a.html
+    └── b.md
+```
+
 ## Setup
 
 ```bash
