@@ -30,3 +30,23 @@ $ npm i atool-build --save
     --build         only build
     -w, --watch     build with watch mode
 ```
+
+## API
+
+### Dom hooks
+
+There's a placeholder `div#__exampleDom` in default [template file](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs), so you can insert your element into it.
+
+### Template context
+
+This stuff is available on `file` in a template file.
+
+You can use them by the syntax of `ejs`(supported only currently).
+
+- `title`
+
+- `script`
+
+- `style`
+
+- `desc`
