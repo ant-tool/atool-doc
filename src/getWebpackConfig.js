@@ -1,14 +1,13 @@
 import path, { join } from 'path';
-import { readdirSync, readFileSync } from 'fs';
+import { readdirSync, readFileSync, existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
 import { ProgressPlugin } from 'atool-build/lib/webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { marked } from 'atool-doc-util';
 
-const cwd = process.cwd();
-const root = path.join(__dirname, '../');
-const pkg = require(join(cwd, 'package.json'));
+const root = path.join(__dirname, '..');
 
-const getResolve = function () {
+const getResolve = function (cwd, pkg) {
   return {
     root: cwd,
     extensions: ['', '.js', '.jsx'],
@@ -29,10 +28,7 @@ const getEntry = function(source) {
   files.forEach(file => {
     const ext = path.extname(file);
     const name = path.basename(file, ext);
-    if(ext === '.md') {
-      // const obj = require(join(resolveCwd(file)));
-      console.log(require('./loader!./examples/fs.md'));
-    } else if (ext === '.js' && 1) {
+    if(ext === '.md' || (ext === '.js' && existsSync(join(path.dirname(file), `${name}.html`)))) {
       entry[join(path.dirname(file), name)] = file;
     }
   });
@@ -40,41 +36,38 @@ const getEntry = function(source) {
 }
 
 
-export default function(source, dest) {
+export default function(source, dest, cwd, tpl) {
+  const pkg = require(join(cwd, 'package.json'));
   const commonConfig = getWebpackCommonConfig({ cwd });
   const entry = getEntry(source);
   const webpackConfig = {
     ...commonConfig,
     entry,
     devtool: '#inline-source-map',
-    resolve: getResolve(),
-    resolveLoader: {
-      ...commonConfig.resolveLoader,
-      root: join(__dirname, '../node_modules'),
-    },
+    resolve: getResolve(cwd, pkg),
     output: {
       path: path.resolve(cwd, dest),
       filename: '[name].js',
-    }
+    },
+    cwd: cwd,
+    tplSource: source,
   };
+  webpackConfig.resolveLoader.root = join(__dirname, '../node_modules');
+
+  webpackConfig.module.loaders.push({
+    test: /\.md$/,
+    loader: 'atool-doc-md-loader?template=' + tpl,
+    include: path.join(cwd, source),
+  });
+
+  webpackConfig.module.loaders.push({
+    test: /\.(jsx|js)$/,
+    loader: 'atool-doc-js-loader?template=' + tpl,
+    include: path.join(cwd, source),
+  });
+
 
   webpackConfig.plugins = webpackConfig.plugins.concat([
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: join(root, '/tpl/index.ejs'),
-      inject: 'body',
-      chunks: [],
-      title: 'Custom template',
-      link: entry,
-    })
-  ], Object.keys(entry).map(file => new HtmlWebpackPlugin({
-    filename: `${file}.html`,
-    template: join(root, '/tpl/realEvery.ejs'),
-    inject: 'body',
-    chunks: ['common', file],
-    title: `${path.basename(file)}`,
-    path: './' + path.basename(entry[file]),
-  })), [
     new ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
       if (stream.isTTY && percentage < 0.71) {
@@ -85,6 +78,16 @@ export default function(source, dest) {
         console.log('\nwebpack: bundle build is now finished.');
       }
     })
+  ], [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: join(root, '/tpl/index.ejs'),
+      inject: 'body',
+      chunks: [],
+      title: `${pkg.name}@${pkg.version}`,
+      link: entry,
+      readme: marked(readFileSync(join(cwd, 'README.md'), 'utf-8')),
+    }),
   ]);
 
   return webpackConfig;

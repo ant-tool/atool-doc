@@ -4,31 +4,39 @@ import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
 import dora from 'dora';
 import getWebpackConfig from './getWebpackConfig';
 
-export default function (options) {
-  const { source, dest, cwd } = options;
+const root = path.join(__dirname, '..');
 
-  fs.writeFileSync(
-    path.join(__dirname, '../tpl/realEvery.ejs'),
-    fs.readFileSync(path.join(__dirname, '../tpl/every.ejs'), 'utf8').replace('thisIsCwd', path.join(cwd, source))
-  );
+export default function (options) {
+  const { source, dest, cwd, tpl } = options;
+  const tplPath = tpl ? path.join(cwd, tpl) : path.join(root, 'tpl', 'element.ejs');
 
   let webpackConfig;
 
   if (options.build) {
-    webpackConfig = getWebpackConfig(source, dest);
+    webpackConfig = getWebpackConfig(source, dest, cwd, tplPath);
 
     const compiler = webpack(webpackConfig);
 
-    compiler.watch(200, function(err, stats){
-      console.log('redo');
-    });
+    if(options.watch) {
+      compiler.watch(200, function(err, stats) {
+        if(err) {
+          console.error(err);
+        }
+      });
+    } else {
+      compiler.run(function(err, stats) {
+        if(err) {
+          console.error(err);
+        }
+      });
+    }
   } else {
     dora({
       port: 8002,
       plugins: [
         {
           'middleware.before'() {
-            webpackConfig = getWebpackConfig(source, dest);
+            webpackConfig = getWebpackConfig(source, dest, cwd, tplPath);
           },
           'middleware'() {
             const compiler = webpack(webpackConfig);
