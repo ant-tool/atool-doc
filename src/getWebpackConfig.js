@@ -15,28 +15,28 @@ const getResolve = function (cwd, pkg) {
       [`${pkg.name}$`]: join(cwd, 'index.js'),
       [pkg.name]: cwd,
     },
-  }
-}
+  };
+};
 
 const getDemoFiles = function (dir) {
   return readdirSync(dir).map(file => join(dir, file));
-}
+};
 
-const getEntry = function(source) {
+const getEntry = function (source) {
   const files = getDemoFiles(source);
   const entry = {};
   files.forEach(file => {
     const ext = path.extname(file);
     const name = path.basename(file, ext);
-    if(ext === '.md' || (ext === '.js' && existsSync(join(path.dirname(file), `${name}.html`)))) {
+    if (ext === '.md' || (ext === '.js' && existsSync(join(path.dirname(file), `${name}.html`)))) {
       entry[join(path.dirname(file), name)] = file;
     }
   });
   return entry;
-}
+};
 
 
-export default function(source, dest, cwd, tpl) {
+export default function (source, dest, cwd, tpl) {
   const pkg = require(join(cwd, 'package.json'));
   const commonConfig = getWebpackCommonConfig({ cwd });
   const entry = getEntry(source);
@@ -49,20 +49,20 @@ export default function(source, dest, cwd, tpl) {
       path: path.resolve(cwd, dest),
       filename: '[name].js',
     },
-    cwd: cwd,
+    cwd,
     tplSource: source,
   };
   webpackConfig.resolveLoader.root = join(__dirname, '../node_modules');
 
   webpackConfig.module.loaders.push({
     test: /\.md$/,
-    loader: 'atool-doc-md-loader?template=' + tpl,
+    loader: `atool-doc-md-loader?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
   webpackConfig.module.loaders.push({
     test: /\.(jsx|js)$/,
-    loader: 'atool-doc-js-loader?template=' + tpl,
+    loader: `atool-doc-js-loader?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
@@ -72,12 +72,12 @@ export default function(source, dest, cwd, tpl) {
       const stream = process.stderr;
       if (stream.isTTY && percentage < 0.71) {
         stream.cursorTo(0);
-        stream.write('📦  ' + msg);
+        stream.write(`📦   ${msg}`);
         stream.clearLine(1);
       } else if (percentage === 1) {
         console.log('\nwebpack: bundle build is now finished.');
       }
-    })
+    }),
   ], [
     new HtmlWebpackPlugin({
       filename: 'index.html',

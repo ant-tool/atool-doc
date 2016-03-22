@@ -18,7 +18,9 @@
   "license": "ISC",
   "main": "index.js",
   "files": [
-    "lib"
+    "lib",
+    "bin",
+    "tpl"
   ],
   "bin": {
     "atool-doc": "./bin/atool-doc.js"
@@ -26,11 +28,14 @@
   "scripts": {
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
     "dev": "./node_modules/.bin/babel src --out-dir lib --watch --ignore __tests__",
+    "lint": "eslint src",
+    "eslint-fix": "eslint --fix src",
     "prepublish": "npm run build"
   },
   "peerDependencies": {
     "dora": "~0.3.0",
-    "atool-build": "~0.6.0"
+    "atool-build": "~0.6.0",
+    "webpack": "~1.12.2"
   },
   "dependencies": {
     "atool-doc-js-loader": "~0.0.1",

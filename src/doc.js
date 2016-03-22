@@ -1,6 +1,5 @@
-import fs from 'fs';
 import path from 'path';
-import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
+import webpack from 'atool-build/lib/webpack';
 import dora from 'dora';
 import getWebpackConfig from './getWebpackConfig';
 
@@ -17,15 +16,15 @@ export default function (options) {
 
     const compiler = webpack(webpackConfig);
 
-    if(options.watch) {
-      compiler.watch(200, function(err, stats) {
-        if(err) {
+    if (options.watch) {
+      compiler.watch(200, (err) => {
+        if (err) {
           console.error(err);
         }
       });
     } else {
-      compiler.run(function(err, stats) {
-        if(err) {
+      compiler.run((err) => {
+        if (err) {
           console.error(err);
         }
       });
@@ -41,19 +40,19 @@ export default function (options) {
           'middleware'() {
             const compiler = webpack(webpackConfig);
             this.set('compiler', compiler);
-            compiler.plugin('done', function doneHandler(stats) {
+            compiler.plugin('done', stats => {
               if (stats.hasErrors()) {
-                console.log(stats.toString({colors: true}));
+                console.log(stats.toString({ colors: true }));
               }
             });
             return require('koa-webpack-dev-middleware')(compiler, {
               publicPath: '/',
               quiet: true,
-              ...this.query
+              ...this.query,
             });
-          }
-        }
-      ]
-    })
+          },
+        },
+      ],
+    });
   }
 }
