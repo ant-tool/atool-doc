@@ -70,22 +70,39 @@ Then, visit http://127.0.0.1:8002/
 
 ```
 
-## API
+## How to write demo file
 
-### Dom hooks
+You can using a `.js` or `.md`(more powerful) to write your demo file.
 
-There's a placeholder `div#__exampleDom` in default [template file](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs), so you can insert your element into it.
+### `.md`
 
-### Template context
+- customize dom
+- customize css(supported only currently)
 
-This stuff is available on `file` in a template file.
+[how-to-write](https://github.com/ant-tool/atool-doc/blob/master/examples/customDomAndStyle.md)
+
+
+### `.js`
+
+Work with the hook dom `div#__exampleDom` in default [template file](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs)
+
+[how-to-write](https://github.com/ant-tool/atool-doc/blob/master/examples/insertToHtml.md)
+
+
+## Customize template
+
+You can using `atool-doc --tpl somewhere` to specify your template file.
+
+The follow variables are available on the context of `file` in a template file.
 
 You can use them by the syntax of `ejs`(supported only currently).
 
-- `title`
+- `title`: filename
 
-- `script`
+- `script`: array of script to load in the html file
 
-- `style`
+- `html`: html element
 
-- `desc`
+- `style`: style by css
+
+- `desc`: other things using by markdown

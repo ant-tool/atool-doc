@@ -736,6 +736,8 @@
     padding: 20px 0;
   }
 
+  </style>
+  <style type="text/css">
   <%= file.style %>
   </style>
 </head>
@@ -746,6 +748,13 @@
     </div>
     <div class="example">
       <div class="example-dom" id="__exampleDom"></div>
+
+      <% if(file.html) { %>
+      <div class="example-html">
+        <%- file.html %>
+      </div>
+      <% } %>
+
       <div class="example-scripts">
       <% file.script.forEach(function(each){ %>
         <script src="<%= each %>"></script>
