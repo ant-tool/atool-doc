@@ -39,8 +39,16 @@ Static demo generator based on [atool-build](https://github.com/ant-tool/atool-b
 ## Setup
 
 ```bash
-$ npm i atool-build --save
+$ npm i atool-doc -g
 ```
+
+### Run examples
+
+```bash
+$ git clone git@github.com:ant-tool/atool-doc.git
+$ cd atool-doc && atool-doc
+```
+Then, visit http://127.0.0.1:8002/
 
 ## Usage
 
@@ -50,13 +58,14 @@ $ npm i atool-build --save
 
   Options:
 
-    -h, --help      output usage information
-    -v, --version   output the version number
-    --dest <dir>    config output dir
-    --source <dir>  config demo source dir
-    --tpl <path>    config custom tpl file
-    --build         only build
-    -w, --watch     build with watch mode
+    -h, --help       output usage information
+    -v, --version    output the version number
+    --dest <dir>     config output dir
+    --source <dir>   config demo source dir
+    --tpl <path>     config custom tpl file
+    --config <path>  config custom webpack.config.js
+    --build          only build
+    -w, --watch      build with watch mode
 ```
 
 ## API
