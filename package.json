@@ -28,6 +28,7 @@
   "scripts": {
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
     "dev": "./node_modules/.bin/babel src --out-dir lib --watch --ignore __tests__",
+    "demo": "node bin/atool-doc.js",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
     "prepublish": "npm run build"
@@ -43,8 +44,7 @@
     "atool-doc-util": "~0.0.1",
     "commander": "~2.9.0",
     "html-webpack-plugin": "~2.9.0",
-    "koa-webpack-dev-middleware": "~1.1.0",
-    "raw-loader": "~0.5.1"
+    "koa-webpack-dev-middleware": "~1.1.0"
   },
   "devDependencies": {
     "babel-cli": "~6.6.5",

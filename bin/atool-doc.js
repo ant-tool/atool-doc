@@ -4,12 +4,12 @@ var program = require('commander');
 
 program
   .version(require('../package').version, '-v, --version')
-  .option('--dest <dir>', 'config output dir', '__site')
-  .option('--source <dir>', 'config demo source dir', 'examples')
-  .option('--tpl <path>', 'config custom tpl file')
-  .option('--config <path>', 'config custom webpack.config.js', 'webpack.config.js')
+  .option('--dest <dir>', 'config path of output dir, default __site', '__site')
+  .option('--source <dir>', 'config path of demo files dir, default examples', 'examples')
+  .option('--tpl <path>', 'config path of tpl file')
+  .option('--config <path>', 'config path of webpack.config, default webpack.config.js', 'webpack.config.js')
   .option('--build', 'only build')
-  .option('-w, --watch', 'build with watch mode')
+  .option('-w, --watch', 'using with --build, watch mode')
   .parse(process.argv);
 
 program.cwd = process.cwd();

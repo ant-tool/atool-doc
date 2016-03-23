@@ -46,7 +46,8 @@ $ npm i atool-doc -g
 
 ```bash
 $ git clone git@github.com:ant-tool/atool-doc.git
-$ cd atool-doc && atool-doc
+$ cd atool-doc && npm i
+$ npm run demo
 ```
 Then, visit http://127.0.0.1:8002/
 
@@ -60,12 +61,13 @@ Then, visit http://127.0.0.1:8002/
 
     -h, --help       output usage information
     -v, --version    output the version number
-    --dest <dir>     config output dir
-    --source <dir>   config demo source dir
-    --tpl <path>     config custom tpl file
-    --config <path>  config custom webpack.config.js
+    --dest <dir>     config path of output dir, default __site
+    --source <dir>   config path of demo files dir, default examples
+    --tpl <path>     config path of tpl file
+    --config <path>  config path of webpack.config, default webpack.config.js
     --build          only build
-    -w, --watch      build with watch mode
+    -w, --watch      using with --build, watch mode
+
 ```
 
 ## API
