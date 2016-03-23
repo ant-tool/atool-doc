@@ -7,7 +7,7 @@
     "doc"
   ],
   "author": "jaredleechn <jaredleechn@gmail.com>",
-  "homepage": "https://github.com/ant-tool/atool-doc#readme",
+  "homepage": "https://github.com/ant-tool/atool-doc",
   "repository": {
     "type": "git",
     "url": "https://github.com/ant-tool/atool-doc"
@@ -31,7 +31,8 @@
     "demo": "node bin/atool-doc.js",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "gh-pages": "npm run demo -- --build && gh-pages -d __site"
   },
   "peerDependencies": {
     "dora": "~0.3.0",
@@ -53,6 +54,7 @@
     "babel-preset-stage-0": "~6.5.0",
     "eslint": "~2.3.0",
     "eslint-config-airbnb": "^6.0.2",
+    "gh-pages": "~0.11.0",
     "pre-commit": "~1.1.2"
   },
   "babel": {

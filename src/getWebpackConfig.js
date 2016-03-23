@@ -90,6 +90,7 @@ export default function (source, dest, cwd, tpl, config) {
       inject: 'body',
       chunks: [],
       title: `${pkg.name}@${pkg.version}`,
+      homepage: pkg.homepage,
       link: entry,
       readme: marked(readFileSync(join(cwd, 'README.md'), 'utf-8')),
     }),
