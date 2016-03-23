@@ -1,6 +1,7 @@
 import path, { join } from 'path';
 import { readdirSync, readFileSync, existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
+import mergeCustomConfig from 'atool-build/lib/mergeCustomConfig';
 import { ProgressPlugin } from 'atool-build/lib/webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { marked } from 'atool-doc-util';
@@ -36,22 +37,26 @@ const getEntry = function (source) {
 };
 
 
-export default function (source, dest, cwd, tpl) {
+export default function (source, dest, cwd, tpl, config) {
   const pkg = require(join(cwd, 'package.json'));
+
   const commonConfig = getWebpackCommonConfig({ cwd });
+  const customConfigPath = join(cwd, config);
+
+  const webpackConfig = existsSync(customConfigPath)
+    ? mergeCustomConfig(commonConfig, customConfigPath, 'development')
+    : commonConfig;
+
   const entry = getEntry(source);
-  const webpackConfig = {
-    ...commonConfig,
-    entry,
-    devtool: '#inline-source-map',
-    resolve: getResolve(cwd, pkg),
-    output: {
-      path: path.resolve(cwd, dest),
-      filename: '[name].js',
-    },
-    cwd,
-    tplSource: source,
+
+  webpackConfig.entry = entry;
+  webpackConfig.resolve = getResolve(cwd, pkg);
+  webpackConfig.output = {
+    path: join(cwd, dest),
+    filename: '[name].js',
   };
+  webpackConfig.cwd = cwd;
+  webpackConfig.tplSource = source;
   webpackConfig.resolveLoader.root = join(__dirname, '../node_modules');
 
   webpackConfig.module.loaders.push({
