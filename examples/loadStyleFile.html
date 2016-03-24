@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>examples/alert.js</title>
+  <title>examples/loadStyleFile.md</title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet"/>
   <style type="text/css">
   @font-face {
@@ -744,18 +744,22 @@
 <body>
   <div class="wrapper">
     <div class="header">
-      <h1>examples/alert.js</h1>
+      <h1>examples/loadStyleFile.md</h1>
     </div>
     <div class="example">
       <div class="example-dom" id="__exampleDom"></div>
 
+      
+      <div class="example-html">
+        <div id="a"></div>
+      </div>
       
 
       <div class="example-scripts">
       
         <script src="../common.js"></script>
       
-        <script src="alert.js"></script>
+        <script src="loadStyleFile.js"></script>
       
       </div>
     </div>
@@ -764,11 +768,11 @@
     <div id="desc" class="boxed-group">
       <div class="markdown-body">
       <h2>code</h2>
-<div class="highlight"><pre><code language=javascript><span class="hljs-meta">'use strict'</span>;
+<div class="highlight"><pre><code language=applescript>&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"a"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;</code></pre></div>
+<div class="highlight"><pre><code language=qml><span class="hljs-keyword">import</span><span class="hljs-string"> './loadStyleFile.less';</span>
+<span class="hljs-keyword">const</span> something = <span class="hljs-string">'these words are red'</span>;
 
-<span class="hljs-keyword">var</span> name = <span class="hljs-string">'atool-doc'</span>;
-
-alert(<span class="hljs-string">'hello, '</span> + name);</code></pre></div>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'a'</span>).innerHTML = something;</code></pre></div>
       </div>
     </div>
     

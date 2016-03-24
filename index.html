@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>
-    atool-doc@0.0.6
+    atool-doc@0.1.0
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet"/>
   <style type="text/css">
@@ -714,7 +714,7 @@
 <body>
   <div>
     <div class="header">
-      <h1>atool-doc@0.0.6</h1>
+      <h1>atool-doc@0.1.0</h1>
     </div>
     <div class="examples">
       <h3>EXAMPLES</h3>
@@ -736,6 +736,12 @@
           <li>
             <a href="./examples/insertToHtml.html">
               examples/insertToHtml
+            </a>
+          </li>
+        
+          <li>
+            <a href="./examples/loadStyleFile.html">
+              examples/loadStyleFile
             </a>
           </li>
         
@@ -779,24 +785,24 @@
     ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
     ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
     └── <span class="hljs-selector-tag">b</span>.md</code></pre></div><h2 id="setup">Setup</h2>
-<div class="highlight"><pre><code language=bash>$ npm i atool-doc -g</code></pre></div><h3 id="run-examples">Run examples</h3>
-<div class="highlight"><pre><code language=bash>$ git <span class="hljs-built_in">clone</span> git@github.com:ant-tool/atool-doc.git
-$ <span class="hljs-built_in">cd</span> atool-doc &amp;&amp; npm i
+<div class="highlight"><pre><code language=stylus>$ npm <span class="hljs-selector-tag">i</span> atool-doc -g</code></pre></div><h3 id="run-examples">Run examples</h3>
+<div class="highlight"><pre><code language=stylus>$ git clone git@github<span class="hljs-selector-class">.com</span>:ant-tool/atool-doc<span class="hljs-selector-class">.git</span>
+$ cd atool-doc &amp;&amp; npm <span class="hljs-selector-tag">i</span>
 $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/">http://127.0.0.1:8002/</a></p>
 <h2 id="usage">Usage</h2>
-<div class="highlight"><pre><code language=bash>
-  Usage: atool-doc [options]
+<div class="highlight"><pre><code language=http>
+  <span class="hljs-attribute">Usage</span>: atool-doc [options]
 
-  Options:
+<span class="haml">  Options:
 
-    -h, --help       output usage information
-    -v, --version    output the version number
-    --dest &lt;dir&gt;     config path of output dir, default __site
-    --source &lt;dir&gt;   config path of demo files dir, default examples
-    --tpl &lt;path&gt;     config path of tpl file
-    --config &lt;path&gt;  config path of webpack.config, default webpack.config.js
-    --build          only build
-    -w, --watch      using with --build, watch mode</code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
+    -<span class="ruby">h, --help       output usage information
+</span>    -<span class="ruby">v, --version    output the version number
+</span>    -<span class="ruby">-dest &lt;dir&gt;     config path of output dir, default __site
+</span>    -<span class="ruby">-source &lt;dir&gt;   config path of demo files dir, default examples
+</span>    -<span class="ruby">-tpl &lt;path&gt;     config path of tpl file
+</span>    -<span class="ruby">-config &lt;path&gt;  config path of webpack.config, default webpack.config.js
+</span>    -<span class="ruby">-build          only build
+</span>    -<span class="ruby">w, --watch      using with --build, watch mode</span></span></code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
 <p>You can using a <code>.js</code> or <code>.md</code>(more powerful) to write your demo file.</p>
 <h3 id="-md-"><code>.md</code></h3>
 <ul>
