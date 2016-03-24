@@ -2,7 +2,7 @@ import path, { join } from 'path';
 import { readdirSync, readFileSync, existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
 import mergeCustomConfig from 'atool-build/lib/mergeCustomConfig';
-import { ProgressPlugin } from 'atool-build/lib/webpack';
+import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { marked } from 'atool-doc-util';
 
@@ -49,6 +49,8 @@ export default function (source, dest, cwd, tpl, config) {
 
   const entry = getEntry(source);
 
+  webpackConfig.devtool = '#inline-source-map';
+
   webpackConfig.entry = entry;
   webpackConfig.resolve = getResolve(cwd, pkg);
   webpackConfig.output = {
@@ -58,6 +60,11 @@ export default function (source, dest, cwd, tpl, config) {
   webpackConfig.cwd = cwd;
   webpackConfig.tplSource = source;
   webpackConfig.resolveLoader.root = join(__dirname, '../node_modules');
+
+  webpackConfig.module.loaders = webpackConfig.module.loaders.map(i => ({
+    ...i,
+    loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!\!).)*\!/, 'style!'),
+  }));
 
   webpackConfig.module.loaders.push({
     test: /\.md$/,
@@ -72,7 +79,7 @@ export default function (source, dest, cwd, tpl, config) {
   });
 
 
-  webpackConfig.plugins = webpackConfig.plugins.concat([
+  webpackConfig.plugins = [
     new ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
       if (stream.isTTY && percentage < 0.71) {
@@ -83,7 +90,6 @@ export default function (source, dest, cwd, tpl, config) {
         console.log('\nwebpack: bundle build is now finished.');
       }
     }),
-  ], [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: join(root, '/tpl/index.ejs'),
@@ -94,7 +100,9 @@ export default function (source, dest, cwd, tpl, config) {
       link: entry,
       readme: marked(readFileSync(join(cwd, 'README.md'), 'utf-8')),
     }),
-  ]);
+    new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
+    new webpack.optimize.OccurenceOrderPlugin(),
+  ];
 
   return webpackConfig;
 }
