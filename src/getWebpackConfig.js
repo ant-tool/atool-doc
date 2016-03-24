@@ -8,17 +8,6 @@ import { marked } from 'atool-doc-util';
 
 const root = path.join(__dirname, '..');
 
-const getResolve = function (cwd, pkg) {
-  return {
-    root: cwd,
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      [`${pkg.name}$`]: join(cwd, 'index.js'),
-      [pkg.name]: cwd,
-    },
-  };
-};
-
 const getDemoFiles = function (dir) {
   return readdirSync(dir).map(file => join(dir, file));
 };
@@ -40,7 +29,7 @@ const getEntry = function (source) {
 export default function (source, dest, cwd, tpl, config) {
   const pkg = require(join(cwd, 'package.json'));
 
-  const commonConfig = getWebpackCommonConfig({ cwd });
+  const commonConfig = getWebpackCommonConfig({ cwd, devtool: '#inline-source-map' });
   const customConfigPath = join(cwd, config);
 
   const webpackConfig = existsSync(customConfigPath)
@@ -49,32 +38,39 @@ export default function (source, dest, cwd, tpl, config) {
 
   const entry = getEntry(source);
 
-  webpackConfig.devtool = '#inline-source-map';
-
   webpackConfig.entry = entry;
-  webpackConfig.resolve = getResolve(cwd, pkg);
   webpackConfig.output = {
     path: join(cwd, dest),
     filename: '[name].js',
   };
   webpackConfig.cwd = cwd;
   webpackConfig.tplSource = source;
-  webpackConfig.resolveLoader.root = join(__dirname, '../node_modules');
+
+  webpackConfig.resolve.root = cwd;
+  webpackConfig.resolve.alias = {
+    [`${pkg.name}$`]: join(cwd, 'index.js'),
+    [pkg.name]: cwd,
+  };
+
+  webpackConfig.resolve.modulesDirectories.push(join(root, 'node_modules'));
+  webpackConfig.resolveLoader.modulesDirectories.push(join(root, 'node_modules'));
 
   webpackConfig.module.loaders = webpackConfig.module.loaders.map(i => ({
     ...i,
     loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!\!).)*\!/, 'style!'),
   }));
 
-  webpackConfig.module.loaders.push({
+  webpackConfig.module.postLoaders = webpackConfig.module.postLoaders || [];
+
+  webpackConfig.module.postLoaders.push({
     test: /\.md$/,
-    loader: `atool-doc-md-loader?template=${tpl}`,
+    loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-md-loader?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
-  webpackConfig.module.loaders.push({
+  webpackConfig.module.postLoaders.push({
     test: /\.(jsx|js)$/,
-    loader: `atool-doc-js-loader?template=${tpl}`,
+    loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-js-loader?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
