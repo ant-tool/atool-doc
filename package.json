@@ -1,6 +1,6 @@
 {
   "name": "atool-doc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "keywords": [
     "atool",
@@ -31,8 +31,8 @@
     "demo": "node bin/atool-doc.js",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
-    "prepublish": "npm run build",
-    "gh-pages": "npm run demo -- --build && gh-pages -d __site"
+    "gh-pages": "npm run demo -- --build && gh-pages -d __site",
+    "pub": "npm run build && npm publish && npm run gh-pages"
   },
   "peerDependencies": {
     "dora": "~0.3.0",
