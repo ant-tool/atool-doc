@@ -36,13 +36,13 @@ Static demo generator based on [atool-build](https://github.com/ant-tool/atool-b
     └── b.md
 ```
 
-## Setup
+## Demos
 
-```bash
-$ npm i atool-doc -g
-```
+### Online Demos
 
-### Run examples
+Visit https://ant-tool.github.io/atool-doc/
+
+### Local Demos
 
 ```bash
 $ git clone git@github.com:ant-tool/atool-doc.git
@@ -53,11 +53,18 @@ Then, visit http://127.0.0.1:8002/
 
 ## Usage
 
+### Setup
+
 ```bash
+$ npm i atool-doc -g
+```
 
-  Usage: atool-doc [options]
+### command
 
-  Options:
+```bash
+  atool-doc          start server at http://127.0.0.1:8002 for demo
+
+  atool-doc [options]
 
     -h, --help       output usage information
     -v, --version    output the version number
@@ -67,42 +74,45 @@ Then, visit http://127.0.0.1:8002/
     --config <path>  config path of webpack.config, default webpack.config.js
     --build          only build
     -w, --watch      using with --build, watch mode
-
 ```
 
 ## How to write demo file
 
-You can using a `.js` or `.md`(more powerful) to write your demo file.
+Use `.js` or `.md` files to write demo under the directory specified in `source`
 
 ### `.md`
 
-- customize dom
-- customize css(supported only currently)
+`.md` is more powerful
 
-[how-to-write](https://github.com/ant-tool/atool-doc/blob/master/examples/customDomAndStyle.md)
+Write the code of demo with a section of `## code`, using language of `js/jsx/javascript`, `css` and `html` to customize css and dom
 
+And then write other things you want at other sections, eg:
+
+![image](https://cloud.githubusercontent.com/assets/5318333/14135283/309ee330-f68f-11e5-8d5f-fdd5a09f7fa9.png)
 
 ### `.js`
 
-Work with the hook dom `div#__exampleDom` in default [template file](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs)
+Without customizing dom, you can also work with the hook dom `div#__exampleDom`, placeholder in default [template file](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs), eg:
 
-[how-to-write](https://github.com/ant-tool/atool-doc/blob/master/examples/insertToHtml.md)
+![image](https://cloud.githubusercontent.com/assets/5318333/14135388/c00356fa-f68f-11e5-9766-00133479ec6a.png)
 
 
 ## Customize template
 
-You can using `atool-doc --tpl somewhere` to specify your template file.
+If the [default template](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs) can not meet your needs, just try writing a new one!
 
-The follow variables are available on the context of `file` in a template file.
+- use `atool-doc --tpl somewhere` to specify your template file
 
-You can use them by the syntax of `ejs`(supported only currently).
+- write your template file with following variables available **on the context of `file`**
 
-- `title`: filename
+  - `title`: string of file-path, `examples/basic`
 
-- `script`: array of script to load in the html file
+  - `script`: array of script-path need to insert into the html file, `['../common.js', './basic.js']`
 
-- `html`: html element
+  - `html`: string of html element, `<div></div>`
 
-- `style`: style by css
+  - `style`: string of style by css, `body { color: red; }`
 
-- `desc`: other things using by markdown
+  - `desc`: code of demo and other things written by markdown, `<h2>code</h2><div class="highlight"></div>`
+
+*The template file only support syntax of `ejs` currently*
