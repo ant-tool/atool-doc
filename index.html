@@ -784,51 +784,58 @@
 └── examples
     ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
     ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
-    └── <span class="hljs-selector-tag">b</span>.md</code></pre></div><h2 id="setup">Setup</h2>
-<div class="highlight"><pre><code language=stylus>$ npm <span class="hljs-selector-tag">i</span> atool-doc -g</code></pre></div><h3 id="run-examples">Run examples</h3>
+    └── <span class="hljs-selector-tag">b</span>.md</code></pre></div><h2 id="demos">Demos</h2>
+<h3 id="online-demos">Online Demos</h3>
+<p>Visit <a href="https://ant-tool.github.io/atool-doc/">https://ant-tool.github.io/atool-doc/</a></p>
+<h3 id="local-demos">Local Demos</h3>
 <div class="highlight"><pre><code language=stylus>$ git clone git@github<span class="hljs-selector-class">.com</span>:ant-tool/atool-doc<span class="hljs-selector-class">.git</span>
 $ cd atool-doc &amp;&amp; npm <span class="hljs-selector-tag">i</span>
 $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/">http://127.0.0.1:8002/</a></p>
 <h2 id="usage">Usage</h2>
-<div class="highlight"><pre><code language=http>
-  <span class="hljs-attribute">Usage</span>: atool-doc [options]
+<h3 id="setup">Setup</h3>
+<div class="highlight"><pre><code language=stylus>$ npm <span class="hljs-selector-tag">i</span> atool-doc -g</code></pre></div><h3 id="command">command</h3>
+<div class="highlight"><pre><code language=dos>  atool-doc          <span class="hljs-built_in">start</span> server <span class="hljs-built_in">at</span> http://<span class="hljs-number">127</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>:<span class="hljs-number">8002</span> <span class="hljs-keyword">for</span> demo
 
-<span class="haml">  Options:
+  atool-doc [options]
 
-    -<span class="ruby">h, --help       output usage information
-</span>    -<span class="ruby">v, --version    output the version number
-</span>    -<span class="ruby">-dest &lt;dir&gt;     config path of output dir, default __site
-</span>    -<span class="ruby">-source &lt;dir&gt;   config path of demo files dir, default examples
-</span>    -<span class="ruby">-tpl &lt;path&gt;     config path of tpl file
-</span>    -<span class="ruby">-config &lt;path&gt;  config path of webpack.config, default webpack.config.js
-</span>    -<span class="ruby">-build          only build
-</span>    -<span class="ruby">w, --watch      using with --build, watch mode</span></span></code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
-<p>You can using a <code>.js</code> or <code>.md</code>(more powerful) to write your demo file.</p>
+    -h, --<span class="hljs-built_in">help</span>       output usage information
+    -v, --version    output the version number
+    --dest &lt;<span class="hljs-built_in">dir</span>&gt;     config <span class="hljs-built_in">path</span> of output <span class="hljs-built_in">dir</span>, default __site
+    --source &lt;<span class="hljs-built_in">dir</span>&gt;   config <span class="hljs-built_in">path</span> of demo files <span class="hljs-built_in">dir</span>, default examples
+    --tpl &lt;<span class="hljs-built_in">path</span>&gt;     config <span class="hljs-built_in">path</span> of tpl file
+    --config &lt;<span class="hljs-built_in">path</span>&gt;  config <span class="hljs-built_in">path</span> of webpack.config, default webpack.config.js
+    --build          only build
+    -w, --watch      using with --build, watch <span class="hljs-built_in">mode</span></code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
+<p>Use <code>.js</code> or <code>.md</code> files to write demo under the directory specified in <code>source</code></p>
 <h3 id="-md-"><code>.md</code></h3>
-<ul>
-<li>customize dom</li>
-<li>customize css(supported only currently)</li>
-</ul>
-<p><a href="https://github.com/ant-tool/atool-doc/blob/master/examples/customDomAndStyle.md">how-to-write</a></p>
+<p><code>.md</code> is more powerful</p>
+<p>Write the code of demo with a section of <code>## code</code>, using language of <code>js/jsx/javascript</code>, <code>css</code> and <code>html</code> to customize css and dom</p>
+<p>And then write other things you want at other sections, eg:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/5318333/14135283/309ee330-f68f-11e5-8d5f-fdd5a09f7fa9.png" alt="image"></p>
 <h3 id="-js-"><code>.js</code></h3>
-<p>Work with the hook dom <code>div#__exampleDom</code> in default <a href="https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs">template file</a></p>
-<p><a href="https://github.com/ant-tool/atool-doc/blob/master/examples/insertToHtml.md">how-to-write</a></p>
+<p>Without customizing dom, you can also work with the hook dom <code>div#__exampleDom</code>, placeholder in default <a href="https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs">template file</a>, eg:</p>
+<p><img src="https://cloud.githubusercontent.com/assets/5318333/14135388/c00356fa-f68f-11e5-9766-00133479ec6a.png" alt="image"></p>
 <h2 id="customize-template">Customize template</h2>
-<p>You can using <code>atool-doc --tpl somewhere</code> to specify your template file.</p>
-<p>The follow variables are available on the context of <code>file</code> in a template file.</p>
-<p>You can use them by the syntax of <code>ejs</code>(supported only currently).</p>
+<p>If the <a href="https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs">default template</a> can not meet your needs, just try writing a new one!</p>
 <ul>
-<li><p><code>title</code>: filename</p>
+<li><p>use <code>atool-doc --tpl somewhere</code> to specify your template file</p>
 </li>
-<li><p><code>script</code>: array of script to load in the html file</p>
+<li><p>write your template file with following variables available <strong>on the context of <code>file</code></strong></p>
+<ul>
+<li><p><code>title</code>: string of file-path, <code>examples/basic</code></p>
 </li>
-<li><p><code>html</code>: html element</p>
+<li><p><code>script</code>: array of script-path need to insert into the html file, <code>[&#39;../common.js&#39;, &#39;./basic.js&#39;]</code></p>
 </li>
-<li><p><code>style</code>: style by css</p>
+<li><p><code>html</code>: string of html element, <code>&lt;div&gt;&lt;/div&gt;</code></p>
 </li>
-<li><p><code>desc</code>: other things using by markdown</p>
+<li><p><code>style</code>: string of style by css, <code>body { color: red; }</code></p>
+</li>
+<li><p><code>desc</code>: code of demo and other things written by markdown, <code>&lt;h2&gt;code&lt;/h2&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;/div&gt;</code></p>
 </li>
 </ul>
+</li>
+</ul>
+<p><em>The template file only support syntax of <code>ejs</code> currently</em></p>
 
       </div>
     </div>
