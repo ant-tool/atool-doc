@@ -60,15 +60,15 @@ export default function (source, dest, cwd, tpl, config) {
     loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!\!).)*\!/, 'style!'),
   }));
 
-  webpackConfig.module.postLoaders = webpackConfig.module.postLoaders || [];
+  webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 
-  webpackConfig.module.postLoaders.push({
+  webpackConfig.module.preLoaders.push({
     test: /\.md$/,
     loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-md-loader?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
-  webpackConfig.module.postLoaders.push({
+  webpackConfig.module.preLoaders.push({
     test: /\.(jsx|js)$/,
     loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-js-loader?template=${tpl}`,
     include: path.join(cwd, source),
