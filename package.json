@@ -44,6 +44,7 @@
     "atool-doc-md-loader": "~0.0.1",
     "atool-doc-util": "~0.0.1",
     "commander": "~2.9.0",
+    "glob": "~7.0.3",
     "html-webpack-plugin": "~2.9.0",
     "koa-webpack-dev-middleware": "~1.1.0",
     "style-loader": "~0.13.0"

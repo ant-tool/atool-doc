@@ -1,27 +1,34 @@
 import path, { join } from 'path';
-import { readdirSync, readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
 import mergeCustomConfig from 'atool-build/lib/mergeCustomConfig';
 import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { marked } from 'atool-doc-util';
+import glob from 'glob';
 
 const root = path.join(__dirname, '..');
 
 const getDemoFiles = function (dir) {
-  return readdirSync(dir).map(file => join(dir, file));
+  return glob.sync(join(dir, '**/*.{js,jsx,html,md}'));
 };
 
 const getEntry = function (source) {
   const files = getDemoFiles(source);
+
   const entry = {};
   files.forEach(file => {
     const ext = path.extname(file);
     const name = path.basename(file, ext);
-    if (ext === '.md' || (ext === '.js' && existsSync(join(path.dirname(file), `${name}.html`)))) {
-      entry[join(path.dirname(file), name)] = file;
+    const pathWithoutExt = join(path.dirname(file), name);
+    if (
+      ext === '.md' ||
+      (ext === '.js' || ext === '.jsx') && files.indexOf(`${pathWithoutExt}.html`) !== -1
+    ) {
+      entry[pathWithoutExt] = file;
     }
   });
+
   return entry;
 };
 
