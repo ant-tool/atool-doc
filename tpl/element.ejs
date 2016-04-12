@@ -736,6 +736,26 @@
     padding: 20px 0;
   }
 
+  .demos-anchor {
+    color: #aaa;
+    position: fixed;
+    margin-right: 24px;
+    top: 40px;
+    right: 0;
+    z-index: 100;
+    background: rgba(240, 240, 240, 0.8);
+    border-radius: 4px 0 0 4px;
+    font-size: 13px;
+    margin: 0;
+    border-left: 3px solid orange;
+    padding: 4px 15px 5px 10px;
+  }
+
+  .demos-anchor li {
+    list-style: none;
+    margin-top: 1px;
+  }
+
   </style>
   <style type="text/css">
   <%= file.style %>
@@ -743,6 +763,17 @@
 </head>
 <body>
   <div class="wrapper">
+    <ul class="demos-anchor">
+      <li><a href="/">Index</a></li>
+    <% var keys = Object.keys(file.link);
+    for(var i = 0; i < keys.length; i++) {%>
+      <li>
+        <a href="/<%= keys[i]%>.html">
+          <%= keys[i] %>
+        </a>
+      </li>
+    <% } %>
+    </ul>
     <div class="header">
       <h1><%= file.title %></h1>
     </div>
