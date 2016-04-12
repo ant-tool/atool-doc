@@ -107,6 +107,8 @@ If the [default template](https://github.com/ant-tool/atool-doc/blob/master/tpl/
 
   - `meta`: meta info of each example file, `{ name: 'something', someKey: 'someValue' }`
 
+  - `link`: link of all demo files, `{ demoName: 'demoPath' }`
+
   - `title`: string of file-path, `examples/basic`
 
   - `script`: array of script-path need to insert into the html file, `['../common.js', './basic.js']`

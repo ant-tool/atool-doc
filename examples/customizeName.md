@@ -1,5 +1,5 @@
 ---
-name: customize
+title: customize
 language: en
 ---
 
