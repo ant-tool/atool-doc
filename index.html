@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>
-    atool-doc@0.1.1
+    atool-doc@0.2.0-beta2
   </title>
   <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
   <style type="text/css">
@@ -714,7 +714,7 @@
 <body>
   <div>
     <div class="header">
-      <h1>atool-doc@0.1.1</h1>
+      <h1>atool-doc@0.2.0-beta2</h1>
     </div>
     <div class="examples">
       <h3>EXAMPLES</h3>
@@ -722,31 +722,43 @@
         <ul>
         
           <li>
-            <a href="./examples/alert.html">
+            <a href="/examples/alert.html">
               examples/alert
             </a>
           </li>
         
           <li>
-            <a href="./examples/customDomAndStyle.html">
+            <a href="/examples/customDomAndStyle.html">
               examples/customDomAndStyle
             </a>
           </li>
         
           <li>
-            <a href="./examples/insertToHtml.html">
+            <a href="/examples/customizeName.html">
+              examples/customizeName
+            </a>
+          </li>
+        
+          <li>
+            <a href="/examples/folder/a.html">
+              examples/folder/a
+            </a>
+          </li>
+        
+          <li>
+            <a href="/examples/insertToHtml.html">
               examples/insertToHtml
             </a>
           </li>
         
           <li>
-            <a href="./examples/loadStyleFile.html">
+            <a href="/examples/loadStyleFile.html">
               examples/loadStyleFile
             </a>
           </li>
         
           <li>
-            <a href="./examples/resolveModule.html">
+            <a href="/examples/resolveModule.html">
               examples/resolveModule
             </a>
           </li>
@@ -822,6 +834,10 @@ $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/"
 </li>
 <li><p>write your template file with following variables available <strong>on the context of <code>file</code></strong></p>
 <ul>
+<li><p><code>meta</code>: meta info of each example file, <code>{ name: &#39;something&#39;, someKey: &#39;someValue&#39; }</code></p>
+</li>
+<li><p><code>link</code>: link of all demo files, <code>{ demoName: &#39;demoPath&#39; }</code></p>
+</li>
 <li><p><code>title</code>: string of file-path, <code>examples/basic</code></p>
 </li>
 <li><p><code>script</code>: array of script-path need to insert into the html file, <code>[&#39;../common.js&#39;, &#39;./basic.js&#39;]</code></p>

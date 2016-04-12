@@ -736,6 +736,26 @@
     padding: 20px 0;
   }
 
+  .demos-anchor {
+    color: #aaa;
+    position: fixed;
+    margin-right: 24px;
+    top: 40px;
+    right: 0;
+    z-index: 100;
+    background: rgba(240, 240, 240, 0.8);
+    border-radius: 4px 0 0 4px;
+    font-size: 13px;
+    margin: 0;
+    border-left: 3px solid orange;
+    padding: 4px 15px 5px 10px;
+  }
+
+  .demos-anchor li {
+    list-style: none;
+    margin-top: 1px;
+  }
+
   </style>
   <style type="text/css">
   #a {
@@ -747,6 +767,52 @@
 </head>
 <body>
   <div class="wrapper">
+    <ul class="demos-anchor">
+      <li><a href="/">Index</a></li>
+    
+      <li>
+        <a href="/examples/alert.html">
+          examples/alert
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/customDomAndStyle.html">
+          examples/customDomAndStyle
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/customizeName.html">
+          examples/customizeName
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/folder/a.html">
+          examples/folder/a
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/insertToHtml.html">
+          examples/insertToHtml
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/loadStyleFile.html">
+          examples/loadStyleFile
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/resolveModule.html">
+          examples/resolveModule
+        </a>
+      </li>
+    
+    </ul>
     <div class="header">
       <h1>examples/customDomAndStyle.md</h1>
     </div>
@@ -772,7 +838,7 @@
     <div id="desc" class="boxed-group">
       <div class="markdown-body">
       <h2>code</h2>
-<div class="highlight"><pre><code language=applescript>&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"a"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;</code></pre></div>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"a"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
 <div class="highlight"><pre><code language=css><span class="hljs-selector-id">#a</span> {
   <span class="hljs-attribute">background</span>: black;
   <span class="hljs-attribute">color</span>: red;

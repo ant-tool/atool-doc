@@ -736,6 +736,26 @@
     padding: 20px 0;
   }
 
+  .demos-anchor {
+    color: #aaa;
+    position: fixed;
+    margin-right: 24px;
+    top: 40px;
+    right: 0;
+    z-index: 100;
+    background: rgba(240, 240, 240, 0.8);
+    border-radius: 4px 0 0 4px;
+    font-size: 13px;
+    margin: 0;
+    border-left: 3px solid orange;
+    padding: 4px 15px 5px 10px;
+  }
+
+  .demos-anchor li {
+    list-style: none;
+    margin-top: 1px;
+  }
+
   </style>
   <style type="text/css">
   
@@ -743,6 +763,52 @@
 </head>
 <body>
   <div class="wrapper">
+    <ul class="demos-anchor">
+      <li><a href="/">Index</a></li>
+    
+      <li>
+        <a href="/examples/alert.html">
+          examples/alert
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/customDomAndStyle.html">
+          examples/customDomAndStyle
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/customizeName.html">
+          examples/customizeName
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/folder/a.html">
+          examples/folder/a
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/insertToHtml.html">
+          examples/insertToHtml
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/loadStyleFile.html">
+          examples/loadStyleFile
+        </a>
+      </li>
+    
+      <li>
+        <a href="/examples/resolveModule.html">
+          examples/resolveModule
+        </a>
+      </li>
+    
+    </ul>
     <div class="header">
       <h1>examples/resolveModule.md</h1>
     </div>
@@ -764,12 +830,12 @@
     <div id="desc" class="boxed-group">
       <div class="markdown-body">
       <h2>code</h2>
-<div class="highlight"><pre><code language=coffeescript>import num from <span class="hljs-string">'./data.json'</span>;
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> num <span class="hljs-keyword">from</span> <span class="hljs-string">'./data.json'</span>;
 
-<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = `<span class="javascript">
-  &lt;h4&gt;Load by <span class="hljs-keyword">import</span>&lt;<span class="hljs-regexp">/h4&gt;
-  &lt;pre&gt;&lt;code&gt;${JSON.stringify(num)}&lt;/</span>code&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>
-</span>`;</code></pre></div>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = <span class="hljs-string">`
+  &lt;h4&gt;Load by import&lt;/h4&gt;
+  &lt;pre&gt;&lt;code&gt;<span class="hljs-subst">${JSON.stringify(num)}</span>&lt;/code&gt;&lt;/pre&gt;
+`</span>;</code></pre></div>
 <h2>desc</h2>
 <p>This example show you how to load modules by <code>import</code> or <code>require</code>;</p>
 <table><thead><tr><th>parameter</th>

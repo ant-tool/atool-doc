@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>examples/insertToHtml.md</title>
+  <title>examples/folder/insert.js</title>
   <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
   <style type="text/css">
   @font-face {
@@ -810,7 +810,7 @@
     
     </ul>
     <div class="header">
-      <h1>examples/insertToHtml.md</h1>
+      <h1>examples/folder/insert.js</h1>
     </div>
     <div class="example">
       <div class="example-dom" id="__exampleDom"></div>
@@ -819,9 +819,9 @@
 
       <div class="example-scripts">
       
-        <script src="../common.js"></script>
+        <script src="../../common.js"></script>
       
-        <script src="insertToHtml.js"></script>
+        <script src="insert.js"></script>
       
       </div>
     </div>
@@ -830,12 +830,10 @@
     <div id="desc" class="boxed-group">
       <div class="markdown-body">
       <h2>code</h2>
-<div class="highlight"><pre><code language=js><span class="hljs-keyword">const</span> self = <span class="hljs-string">'Jared'</span>;
-<span class="hljs-keyword">const</span> something = <span class="hljs-string">`hello, my name is <span class="hljs-subst">${self}</span>`</span>
-
-<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = something;</code></pre></div>
-<h2>desc</h2>
-<p>This example show you how to insert something to the <code>hook dom</code>.</p>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insert</span>(<span class="hljs-params">element</span>) </span>{
+  element.innerHTML = <span class="hljs-string">'this is insert by function in b.js'</span>;
+}
+</code></pre></div>
       </div>
     </div>
     

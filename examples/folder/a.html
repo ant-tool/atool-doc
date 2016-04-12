@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>examples/insertToHtml.md</title>
+  <title>examples/folder/a.md</title>
   <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
   <style type="text/css">
   @font-face {
@@ -810,18 +810,22 @@
     
     </ul>
     <div class="header">
-      <h1>examples/insertToHtml.md</h1>
+      <h1>examples/folder/a.md</h1>
     </div>
     <div class="example">
       <div class="example-dom" id="__exampleDom"></div>
 
       
+      <div class="example-html">
+        <div id="__element"></div>
+      </div>
+      
 
       <div class="example-scripts">
       
-        <script src="../common.js"></script>
+        <script src="../../common.js"></script>
       
-        <script src="insertToHtml.js"></script>
+        <script src="a.js"></script>
       
       </div>
     </div>
@@ -830,12 +834,11 @@
     <div id="desc" class="boxed-group">
       <div class="markdown-body">
       <h2>code</h2>
-<div class="highlight"><pre><code language=js><span class="hljs-keyword">const</span> self = <span class="hljs-string">'Jared'</span>;
-<span class="hljs-keyword">const</span> something = <span class="hljs-string">`hello, my name is <span class="hljs-subst">${self}</span>`</span>
-
-<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = something;</code></pre></div>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"__element"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> { insert } <span class="hljs-keyword">from</span> <span class="hljs-string">'./insert'</span>;
+insert(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__element'</span>));</code></pre></div>
 <h2>desc</h2>
-<p>This example show you how to insert something to the <code>hook dom</code>.</p>
+<p>You can write demo files with directory</p>
       </div>
     </div>
     
