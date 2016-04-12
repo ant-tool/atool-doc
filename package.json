@@ -32,7 +32,8 @@
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
     "gh-pages": "npm run doc -- --build && gh-pages -d __site",
-    "pub": "npm run build && npm publish && npm run gh-pages"
+    "pub": "npm run build && npm publish && npm run gh-pages",
+    "beta": "npm run build && npm publish --tag beta && npm run gh-pages"
   },
   "peerDependencies": {
     "dora": "~0.3.0",
@@ -41,7 +42,7 @@
   },
   "dependencies": {
     "atool-doc-js-loader": "~0.0.1",
-    "atool-doc-md-loader": "~0.0.1",
+    "atool-doc-md-loader": "~0.1.0",
     "atool-doc-util": "~0.0.1",
     "commander": "~2.9.0",
     "glob": "~7.0.3",
