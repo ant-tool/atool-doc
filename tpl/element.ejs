@@ -765,11 +765,10 @@
   <div class="wrapper">
     <ul class="demos-anchor">
       <li><a href="/">Index</a></li>
-    <% var keys = Object.keys(file.link);
-    for(var i = 0; i < keys.length; i++) {%>
+    <% for(var key in file.link) { %>
       <li>
-        <a href="/<%= keys[i]%>.html">
-          <%= keys[i] %>
+        <a href="<%= file.link[key] %>.html">
+          <%= key %>
         </a>
       </li>
     <% } %>
