@@ -28,10 +28,10 @@
   "scripts": {
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
     "dev": "./node_modules/.bin/babel src --out-dir lib --watch --ignore __tests__",
-    "demo": "node bin/atool-doc.js",
+    "doc": "node bin/atool-doc.js --port 8987",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
-    "gh-pages": "npm run demo -- --build && gh-pages -d __site",
+    "gh-pages": "npm run doc -- --build && gh-pages -d __site",
     "pub": "npm run build && npm publish && npm run gh-pages"
   },
   "peerDependencies": {

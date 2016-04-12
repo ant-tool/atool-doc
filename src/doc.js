@@ -7,7 +7,7 @@ import getWebpackConfig from './getWebpackConfig';
 const root = join(__dirname, '..');
 
 export default function (options) {
-  const { source, dest, cwd, tpl, config } = options;
+  const { source, dest, cwd, tpl, config, port } = options;
 
   const tplDefault = join(root, 'tpl', 'element.ejs');
   const tplPath = tpl ? join(cwd, tpl) : tplDefault;
@@ -39,7 +39,7 @@ export default function (options) {
     }
   } else {
     dora({
-      port: 8002,
+      port,
       plugins: [
         {
           'middleware.before'() {
