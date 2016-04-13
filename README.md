@@ -72,6 +72,7 @@ $ npm i atool-doc -g
     --source <dir>   config path of demo files dir, default examples
     --tpl <path>     config path of tpl file
     --config <path>  config path of webpack.config, default webpack.config.js
+    --port <number>  specify server port, default 8002
     --build          only build
     -w, --watch      using with --build, watch mode
 ```
