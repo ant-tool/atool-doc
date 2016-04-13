@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>
-    atool-doc@0.2.0-beta3
+    atool-doc@0.2.0-beta4
   </title>
   <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
   <style type="text/css">
@@ -714,7 +714,7 @@
 <body>
   <div>
     <div class="header">
-      <h1>atool-doc@0.2.0-beta3</h1>
+      <h1>atool-doc@0.2.0-beta4</h1>
     </div>
     <div class="examples">
       <h3>EXAMPLES</h3>
@@ -800,24 +800,24 @@
 <h3 id="online-demos">Online Demos</h3>
 <p>Visit <a href="https://ant-tool.github.io/atool-doc/">https://ant-tool.github.io/atool-doc/</a></p>
 <h3 id="local-demos">Local Demos</h3>
-<div class="highlight"><pre><code language=stylus>$ git clone git@github<span class="hljs-selector-class">.com</span>:ant-tool/atool-doc<span class="hljs-selector-class">.git</span>
-$ cd atool-doc &amp;&amp; npm <span class="hljs-selector-tag">i</span>
+<div class="highlight"><pre><code language=bash>$ git <span class="hljs-built_in">clone</span> git@github.com:ant-tool/atool-doc.git
+$ <span class="hljs-built_in">cd</span> atool-doc &amp;&amp; npm i
 $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/">http://127.0.0.1:8002/</a></p>
 <h2 id="usage">Usage</h2>
 <h3 id="setup">Setup</h3>
-<div class="highlight"><pre><code language=stylus>$ npm <span class="hljs-selector-tag">i</span> atool-doc -g</code></pre></div><h3 id="command">command</h3>
-<div class="highlight"><pre><code language=dos>  atool-doc          <span class="hljs-built_in">start</span> server <span class="hljs-built_in">at</span> http://<span class="hljs-number">127</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>:<span class="hljs-number">8002</span> <span class="hljs-keyword">for</span> demo
+<div class="highlight"><pre><code language=bash>$ npm i atool-doc -g</code></pre></div><h3 id="command">command</h3>
+<div class="highlight"><pre><code language=bash>  atool-doc          start server at http://127.0.0.1:8002 <span class="hljs-keyword">for</span> demo
 
   atool-doc [options]
 
-    -h, --<span class="hljs-built_in">help</span>       output usage information
+    -h, --help       output usage information
     -v, --version    output the version number
-    --dest &lt;<span class="hljs-built_in">dir</span>&gt;     config <span class="hljs-built_in">path</span> of output <span class="hljs-built_in">dir</span>, default __site
-    --source &lt;<span class="hljs-built_in">dir</span>&gt;   config <span class="hljs-built_in">path</span> of demo files <span class="hljs-built_in">dir</span>, default examples
-    --tpl &lt;<span class="hljs-built_in">path</span>&gt;     config <span class="hljs-built_in">path</span> of tpl file
-    --config &lt;<span class="hljs-built_in">path</span>&gt;  config <span class="hljs-built_in">path</span> of webpack.config, default webpack.config.js
+    --dest &lt;dir&gt;     config path of output dir, default __site
+    --source &lt;dir&gt;   config path of demo files dir, default examples
+    --tpl &lt;path&gt;     config path of tpl file
+    --config &lt;path&gt;  config path of webpack.config, default webpack.config.js
     --build          only build
-    -w, --watch      using with --build, watch <span class="hljs-built_in">mode</span></code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
+    -w, --watch      using with --build, watch mode</code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
 <p>Use <code>.js</code> or <code>.md</code> files to write demo under the directory specified in <code>source</code></p>
 <h3 id="-md-"><code>.md</code></h3>
 <p><code>.md</code> is more powerful</p>
