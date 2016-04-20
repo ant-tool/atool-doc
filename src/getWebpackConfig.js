@@ -36,7 +36,7 @@ const getEntry = function (source) {
 export default function (source, dest, cwd, tpl, config) {
   const pkg = require(join(cwd, 'package.json'));
 
-  const commonConfig = getWebpackCommonConfig({ cwd, devtool: '#inline-source-map' });
+  const commonConfig = getWebpackCommonConfig({ cwd, devtool: '#inline-cheap-module-source-map' });
   const customConfigPath = join(cwd, config);
 
   const webpackConfig = existsSync(customConfigPath)
