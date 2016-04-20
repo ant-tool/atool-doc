@@ -70,7 +70,7 @@ $ npm i atool-doc -g
     -v, --version    output the version number
     --dest <dir>     config path of output dir, default __site
     --source <dir>   config path of demo files dir, default examples
-    --tpl <path>     config path of tpl file
+    --tpl <path>     config path or name of tpl file
     --config <path>  config path of webpack.config, default webpack.config.js
     --port <number>  specify server port, default 8002
     --build          only build
@@ -98,9 +98,17 @@ Without customizing dom, you can also work with the hook dom `div#__exampleDom`,
 ![image](https://cloud.githubusercontent.com/assets/5318333/14135388/c00356fa-f68f-11e5-9766-00133479ec6a.png)
 
 
-## Customize template
+## Template
 
-If the [default template](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs) can not meet your needs, just try writing a new one!
+### supprted templates
+
+atool-doc support [several template](https://github.com/ant-tool/atool-doc/blob/master/src/constant.js) file for different scenes:
+
+- github: github theme, default one
+
+### customize template
+
+If the templates above can not meet your needs, just try writing a new one!
 
 - use `atool-doc --tpl somewhere` to specify your template file
 
