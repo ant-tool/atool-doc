@@ -16,3 +16,4 @@ program
 program.cwd = process.cwd();
 
 require('../lib/doc')(program);
+require('atool-monitor').emit();
