@@ -1,13 +1,13 @@
-webpackJsonp([4,0],[
+webpackJsonp([7,0],[
 /* 0 */
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	var name = 'atool-doc';
-	
+
 	alert('hello, ' + name);
 
 /***/ }
 ]);
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9leGFtcGxlcy9hbGVydC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSxLQUFNLE9BQU87O0FBRWIsbUJBQWdCLE0iLCJmaWxlIjoiZXhhbXBsZXMvYWxlcnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBuYW1lID0gJ2F0b29sLWRvYyc7XG5cbmFsZXJ0KGBoZWxsbywgJHtuYW1lfWApO1xuXG5cblxuLyoqIFdFQlBBQ0sgRk9PVEVSICoqXG4gKiogLi9leGFtcGxlcy9hbGVydC5qc1xuICoqLyJdLCJzb3VyY2VSb290IjoiIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXhhbXBsZXMvYWxlcnQuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZXhhbXBsZXMvYWxlcnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgbmFtZSA9ICdhdG9vbC1kb2MnO1xuXG5hbGVydChgaGVsbG8sICR7bmFtZX1gKTtcblxuXG5cbi8qKiBXRUJQQUNLIEZPT1RFUiAqKlxuICoqIGV4YW1wbGVzL2FsZXJ0LmpzXG4gKiovIl0sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQTtBQUNBOzs7OyIsInNvdXJjZVJvb3QiOiIifQ==
