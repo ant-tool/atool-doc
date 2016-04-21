@@ -710,11 +710,14 @@
       .hljs-strong {
         font-weight: bold;
       }
+
       .wrapper {
-        width: 86%;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 7%;
+        padding-bottom: 30px;
+      }
+
+      .wrapper-content {
+        width: calc(100% - 260px);
       }
 
       .example {
@@ -722,23 +725,124 @@
       }
 
       .demos-anchor {
-        color: #aaa;
+        max-width: 230px;
+        width: calc(100% + 10px);
+        right: 20px;
         position: fixed;
-        margin-right: 24px;
-        top: 40px;
-        right: 0;
+        color: #aaa;
+        padding: 0;
         z-index: 100;
-        background: rgba(240, 240, 240, 0.8);
-        border-radius: 4px 0 0 4px;
-        font-size: 13px;
-        margin: 0;
-        border-left: 3px solid orange;
-        padding: 4px 15px 5px 10px;
       }
 
-      .demos-anchor li {
+      .menu {
+        margin-bottom: 15px;
         list-style: none;
-        margin-top: 1px;
+        background-color: #fff;
+        border: 1px solid #d8d8d8;
+        border-radius: 3px;
+      }
+
+      .menu-item {
+        font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        position: relative;
+        display: block;
+        padding: 8px 10px;
+        text-shadow: 0 1px 0 #fff;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+      }
+      .menu-item:first-child {
+        border-top: 0;
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+      }
+      .menu-item:first-child:before {
+        border-top-left-radius: 2px;
+      }
+      .menu-item:last-child {
+        border-bottom: 0;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+      .menu-item:last-child:before {
+        border-bottom-left-radius: 2px;
+      }
+      .menu-item:hover {
+        text-decoration: none;
+        background-color: #f9f9f9;
+      }
+
+      .menu-item.selected {
+        font-weight: bold;
+        color: #222;
+        cursor: default;
+        background-color: #fff;
+      }
+      .menu-item.selected:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 2px;
+        content: "";
+        background-color: #d26911;
+      }
+
+      .menu-item .octicon {
+        margin-right: 5px;
+        width: 16px;
+        color: #333;
+        text-align: center;
+      }
+
+      .menu-item .counter {
+        float: right;
+        margin-left: 5px;
+      }
+
+      .menu-item .menu-warning {
+        float: right;
+        color: #d26911;
+      }
+
+      .menu-item .avatar {
+        float: left;
+        margin-right: 5px;
+      }
+
+      .menu-item.alert .counter {
+        color: #bd2c00;
+      }
+
+      .menu-heading {
+        display: block;
+        padding: 8px 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #555;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #eee;
+      }
+      .menu-heading:hover {
+        text-decoration: none;
+      }
+      .menu-heading:first-child {
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+      }
+      .menu-heading:last-child {
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        border-bottom: 0;
+      }
+
+      a {
+        cursor: auto;
+        color: #4078c0;
+        text-decoration: none;
       }
 
     </style>
@@ -748,50 +852,47 @@
   </head>
   <body>
     <div class="wrapper">
-      <ul class="demos-anchor">
-        <% for(var key in file.link) { %>
-          <li>
-            <a href="<%= file.link[key] %>.html">
-              <%= key %>
-            </a>
-          </li>
+      <ul class="demos-anchor menu">
+        <% for(var key in file.link) { var self = key === file.resource.relativeToDemo %>
+          <a href="<%= self ? '' : file.link[key] + '.html' %>" class="menu-item<%= self ? ' selected' : '' %>"><%= key %></a>
         <% } %>
       </ul>
-      <div class="header">
-        <h1><%= file.title %></h1>
-      </div>
-      <div class="example">
-        <div class="example-dom" id="__exampleDom"></div>
+      <div class="wrapper-content">
+        <div class="header">
+          <h1><%= file.title %></h1>
+        </div>
+        <div class="example">
+          <div class="example-dom" id="__exampleDom"></div>
 
-        <% if(file.html) { %>
-          <div class="example-html">
-            <%- file.html %>
+          <% if(file.html) { %>
+            <div class="example-html">
+              <%- file.html %>
+            </div>
+          <% } %>
+
+          <div class="example-scripts">
+            <% file.script.forEach(function(each){ %>
+              <script src="<%= each %>"></script>
+            <% })%>
+          </div>
+        </div>
+
+        <% if(file.desc) { %>
+          <div class="boxed-group" id="desc">
+            <div class="markdown-body">
+              <%- file.desc %>
+            </div>
           </div>
         <% } %>
 
-        <div class="example-scripts">
-          <% file.script.forEach(function(each){ %>
-            <script src="<%= each %>"></script>
-          <% })%>
-        </div>
+        <% if(file.readme) { %>
+          <div class="boxed-group" id="readme">
+            <h3>README.md</h3>
+            <div class="markdown-body">
+              <%- file.readme %>
+            </div>
+          </div>
+        <% } %>
       </div>
-
-      <% if(file.desc) { %>
-        <div class="boxed-group" id="desc">
-          <div class="markdown-body">
-            <%- file.desc %>
-          </div>
-        </div>
-      <% } %>
-
-      <% if(file.readme) { %>
-        <div class="boxed-group" id="readme">
-          <h3>README.md</h3>
-          <div class="markdown-body">
-            <%- file.readme %>
-          </div>
-        </div>
-      <% } %>
-    </div>
   </body>
 </html>
