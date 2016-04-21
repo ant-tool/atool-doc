@@ -41,8 +41,8 @@
     "webpack": "~1.12.2"
   },
   "dependencies": {
-    "atool-doc-js-loader": "~0.0.1",
-    "atool-doc-md-loader": "~0.1.0",
+    "atool-doc-js-loader": "~0.1.0",
+    "atool-doc-md-loader": "~0.2.0",
     "atool-doc-util": "~0.0.1",
     "atool-monitor": "0.x",
     "commander": "~2.9.0",

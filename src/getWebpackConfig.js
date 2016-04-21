@@ -51,7 +51,7 @@ export default function (source, dest, cwd, tpl, config) {
     filename: '[name].js',
   };
   webpackConfig.cwd = cwd;
-  webpackConfig.tplSource = source;
+  webpackConfig.demoSource = source;
 
   webpackConfig.resolve.root = cwd;
   webpackConfig.resolve.alias = {
@@ -81,6 +81,10 @@ export default function (source, dest, cwd, tpl, config) {
     include: path.join(cwd, source),
   });
 
+  const link = {};
+  Object.keys(entry).forEach(key => {
+    link[path.relative(source, key)] = key;
+  });
 
   webpackConfig.plugins = [
     new ProgressPlugin((percentage, msg) => {
@@ -100,7 +104,7 @@ export default function (source, dest, cwd, tpl, config) {
       chunks: [],
       title: `${pkg.name}@${pkg.version}`,
       homepage: pkg.homepage,
-      link: entry,
+      link,
       readme: marked(readFileSync(join(cwd, 'README.md'), 'utf-8')),
     }),
     new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
