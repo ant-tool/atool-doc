@@ -64,7 +64,7 @@ export default function (source, dest, cwd, tpl, config) {
 
   webpackConfig.module.loaders = webpackConfig.module.loaders.map(i => ({
     ...i,
-    loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!\!).)*\!/, 'style!'),
+    loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!!).)*!/, 'style!'),
   }));
 
   webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
