@@ -120,6 +120,8 @@ If the templates above can not meet your needs, just try writing a new one!
 
   - `title`: string of file-path, `examples/basic`
 
+  - `resource`: kinds of path for resourceFile, `{ name: 'basicNameAndExt', relativeToCwd: 'relativePathToCwd' }`
+
   - `script`: array of script-path need to insert into the html file, `['../common.js', './basic.js']`
 
   - `html`: string of html element, `<div></div>`
