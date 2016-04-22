@@ -33,7 +33,9 @@
     "eslint-fix": "eslint --fix src",
     "gh-pages": "npm run doc -- --build && gh-pages -d __site",
     "pub": "npm run build && npm publish && npm run gh-pages",
-    "beta": "npm run build && npm publish --tag beta && npm run gh-pages"
+    "beta": "npm run build && npm publish --tag beta && npm run gh-pages",
+    "test": "npm run lint",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "peerDependencies": {
     "dora": "~0.3.0",
