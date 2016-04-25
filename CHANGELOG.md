@@ -1,3 +1,14 @@
+## 0.3.0
+
+`2016-04-25`
+
+- change inline-source-map to inline-cheap-module-source-map
+- add atool-monitor
+- support specify template name, default is github
+- change webpackConfig.tplSource to webpackConfig.demoSource
+- add resource to context of file
+- refine element.ejs
+
 ## 0.2.0
 
 `2016-04-13`

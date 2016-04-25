@@ -1,6 +1,6 @@
 {
   "name": "atool-doc",
-  "version": "0.3.0-beta0",
+  "version": "0.3.0",
   "description": "Static demo site generator based on atool-build & dora.",
   "keywords": [
     "atool",
@@ -33,7 +33,9 @@
     "eslint-fix": "eslint --fix src",
     "gh-pages": "npm run doc -- --build && gh-pages -d __site",
     "pub": "npm run build && npm publish && npm run gh-pages",
-    "beta": "npm run build && npm publish --tag beta && npm run gh-pages"
+    "beta": "npm run build && npm publish --tag beta && npm run gh-pages",
+    "test": "npm run lint",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "peerDependencies": {
     "dora": "~0.3.0",
@@ -43,7 +45,7 @@
   "dependencies": {
     "atool-doc-js-loader": "~0.1.0",
     "atool-doc-md-loader": "~0.2.0",
-    "atool-doc-util": "~0.0.1",
+    "atool-doc-util": "~0.1.0",
     "atool-monitor": "0.x",
     "commander": "~2.9.0",
     "glob": "~7.0.3",
