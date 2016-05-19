@@ -8,7 +8,7 @@ import { tplSet } from './constant';
 const root = join(__dirname, '..');
 
 export default function (options) {
-  const { source, dest, cwd, tpl, config, port } = options;
+  const { source, dest, cwd, tpl, config, port, doraPlugin } = options;
 
   const tplDefault = join(root, tplSet.github);
   let tplPath;
@@ -48,9 +48,14 @@ export default function (options) {
       });
     }
   } else {
+    const plugins = doraPlugin ? doraPlugin.split(',') : [];
+    if (plugins.indexOf('webpack') !== -1) {
+      console.warn('no need to add dora-plugin-webpack, ignore it');
+    }
     dora({
       port,
       plugins: [
+        ...plugins.filter(item => item !== 'webpack'),
         {
           'middleware.before'() {
             webpackConfig = getWebpackConfig(source, dest, cwd, tplPath, config);

@@ -11,6 +11,7 @@ program
   .option('--port <number>', 'specify server port, default 8002', '8002')
   .option('--build', 'only build')
   .option('-w, --watch', 'using with --build, watch mode')
+  .option('--doraPlugin <plugins>', 'config plugin of dora, no need to add dora-plugin-webpack')
   .parse(process.argv);
 
 program.cwd = process.cwd();
