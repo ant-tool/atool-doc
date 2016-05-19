@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
-    <title>
-      atool-doc@0.3.0
-    </title>
+    <meta charset="UTF-8">
+    <title>examples/loadDataFromMock.md</title>
     <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
     <style type="text/css">
       @font-face {
@@ -586,6 +583,34 @@
         margin: 0;
       }
 
+      .highlight pre {
+        padding: 0.8em 1em;
+        font: 14px/20px Consolas, Monaco, 'Andale Mono', monospace;
+        border: 1px solid #e5e8ec;
+        border-radius: 3px;
+        background-size: 40px 40px;
+        background-origin: content-box;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .highlight pre > code {
+        font-family: inherit;
+        direction: ltr;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        vertical-align: 2px;
+        display: block;
+        -moz-tab-size: 2;
+        -o-tab-size: 2;
+        tab-size: 2;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+
       /*
 
   github.com style (c) Vasily Polovnyov <vast@whiteants.net>
@@ -686,170 +711,213 @@
         font-weight: bold;
       }
 
-      .header {
-        min-width: 200px;
-        max-width: 790px;
-        margin: 0 auto;
+      .wrapper {
+        margin-left: 7%;
+        padding-bottom: 30px;
       }
+
+      .wrapper-content {
+        width: calc(100% - 260px);
+      }
+
+      .example {
+        padding: 20px 0;
+      }
+
+      .demos-anchor {
+        max-width: 230px;
+        width: calc(100% + 10px);
+        right: 20px;
+        position: fixed;
+        color: #aaa;
+        padding: 0;
+        z-index: 100;
+      }
+
+      .menu {
+        margin-bottom: 15px;
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid #d8d8d8;
+        border-radius: 3px;
+      }
+
+      .menu-item {
+        font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        position: relative;
+        display: block;
+        padding: 8px 10px;
+        text-shadow: 0 1px 0 #fff;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+      }
+      .menu-item:first-child {
+        border-top: 0;
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+      }
+      .menu-item:first-child:before {
+        border-top-left-radius: 2px;
+      }
+      .menu-item:last-child {
+        border-bottom: 0;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+      .menu-item:last-child:before {
+        border-bottom-left-radius: 2px;
+      }
+      .menu-item:hover {
+        text-decoration: none;
+        background-color: #f9f9f9;
+      }
+
+      .menu-item.selected {
+        font-weight: bold;
+        color: #222;
+        cursor: default;
+        background-color: #fff;
+      }
+      .menu-item.selected:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 2px;
+        content: "";
+        background-color: #d26911;
+      }
+
+      .menu-item .octicon {
+        margin-right: 5px;
+        width: 16px;
+        color: #333;
+        text-align: center;
+      }
+
+      .menu-item .counter {
+        float: right;
+        margin-left: 5px;
+      }
+
+      .menu-item .menu-warning {
+        float: right;
+        color: #d26911;
+      }
+
+      .menu-item .avatar {
+        float: left;
+        margin-right: 5px;
+      }
+
+      .menu-item.alert .counter {
+        color: #bd2c00;
+      }
+
+      .menu-heading {
+        display: block;
+        padding: 8px 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #555;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #eee;
+      }
+      .menu-heading:hover {
+        text-decoration: none;
+      }
+      .menu-heading:first-child {
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+      }
+      .menu-heading:last-child {
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        border-bottom: 0;
+      }
+
+      a {
+        cursor: auto;
+        color: #4078c0;
+        text-decoration: none;
+      }
+
+    </style>
+    <style type="text/css">
       
     </style>
   </head>
-
   <body>
-    <div>
-      <div class="header">
-        <h1>atool-doc@0.3.0</h1>
-      </div>
-      <div class="examples">
-        <h3>EXAMPLES</h3>
-        <div class="examples-body">
-          <ul>
-            
-              <li>
-                <a href="./examples/alert.html">
-                  alert
-                </a>
-              </li>
-            
-              <li>
-                <a href="./examples/customDomAndStyle.html">
-                  customDomAndStyle
-                </a>
-              </li>
-            
-              <li>
-                <a href="./examples/customizeName.html">
-                  customizeName
-                </a>
-              </li>
-            
-              <li>
-                <a href="./examples/folder/a.html">
-                  folder/a
-                </a>
-              </li>
-            
-              <li>
-                <a href="./examples/insertToHtml.html">
-                  insertToHtml
-                </a>
-              </li>
-            
-              <li>
-                <a href="./examples/loadStyleFile.html">
-                  loadStyleFile
-                </a>
-              </li>
-            
-              <li>
-                <a href="./examples/resolveModule.html">
-                  resolveModule
-                </a>
-              </li>
-            
-          </ul>
+    <div class="wrapper">
+      <ul class="demos-anchor menu">
+        
+          <a href="../index.html" class="menu-item">Index</a>
+        
+          <a href="alert.html" class="menu-item">alert</a>
+        
+          <a href="customDomAndStyle.html" class="menu-item">customDomAndStyle</a>
+        
+          <a href="customizeName.html" class="menu-item">customizeName</a>
+        
+          <a href="folder/a.html" class="menu-item">folder/a</a>
+        
+          <a href="insertToHtml.html" class="menu-item">insertToHtml</a>
+        
+          <a href="" class="menu-item selected">loadDataFromMock</a>
+        
+          <a href="loadStyleFile.html" class="menu-item">loadStyleFile</a>
+        
+          <a href="resolveModule.html" class="menu-item">resolveModule</a>
+        
+      </ul>
+      <div class="wrapper-content">
+        <div class="header">
+          <h1>examples/loadDataFromMock.md</h1>
         </div>
-      </div>
-      <div class="boxed-group" id="readme">
-        <h3>README.md</h3>
-        <div class="markdown-body">
-          <h1 id="atool-doc">atool-doc</h1>
-<p><a href="https://npmjs.org/package/atool-doc"><img src="https://img.shields.io/npm/v/atool-doc.svg?style=flat" alt="NPM version"></a>
-<a href="https://travis-ci.org/ant-tool/atool-doc"><img src="https://img.shields.io/travis/ant-tool/atool-doc.svg?style=flat" alt="Build Status"></a>
-<a href="https://coveralls.io/r/ant-tool/atool-doc"><img src="https://img.shields.io/coveralls/ant-tool/atool-doc.svg?style=flat" alt="Coverage Status"></a>
-<a href="https://npmjs.org/package/atool-doc"><img src="http://img.shields.io/npm/dm/atool-doc.svg?style=flat" alt="NPM downloads"></a>
-<a href="https://david-dm.org/ant-tool/atool-doc"><img src="https://david-dm.org/ant-tool/atool-doc.svg" alt="Dependency Status"></a></p>
-<p>Static demo generator based on <a href="https://github.com/ant-tool/atool-build">atool-build</a> and <a href="https://github.com/dora-js/dora">dora</a></p>
-<p><strong>before</strong></p>
-<div class="highlight"><pre><code language=stylus>./
-├── README<span class="hljs-selector-class">.md</span>
-└── examples
-    ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
-    ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
-    └── <span class="hljs-selector-tag">b</span>.md</code></pre></div><p><strong>after</strong></p>
-<div class="highlight"><pre><code language=stylus>./
-├── README<span class="hljs-selector-class">.md</span>
-├── __site
-│   ├── common<span class="hljs-selector-class">.js</span>
-│   ├── examples
-│   │   ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
-│   │   ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
-│   │   ├── <span class="hljs-selector-tag">b</span><span class="hljs-selector-class">.html</span>
-│   │   ├── <span class="hljs-selector-tag">b</span><span class="hljs-selector-class">.js</span>
-│   └── index<span class="hljs-selector-class">.html</span>
-└── examples
-    ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
-    ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
-    └── <span class="hljs-selector-tag">b</span>.md</code></pre></div><h2 id="demos">Demos</h2>
-<h3 id="online-demos">Online Demos</h3>
-<p>Visit <a href="https://ant-tool.github.io/atool-doc/">https://ant-tool.github.io/atool-doc/</a></p>
-<h3 id="local-demos">Local Demos</h3>
-<div class="highlight"><pre><code language=bash>$ git <span class="hljs-built_in">clone</span> git@github.com:ant-tool/atool-doc.git
-$ <span class="hljs-built_in">cd</span> atool-doc &amp;&amp; npm i
-$ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/">http://127.0.0.1:8002/</a></p>
-<h2 id="usage">Usage</h2>
-<h3 id="setup">Setup</h3>
-<div class="highlight"><pre><code language=bash>$ npm i atool-doc -g</code></pre></div><h3 id="command">command</h3>
-<div class="highlight"><pre><code language=bash>  atool-doc          start server at http://127.0.0.1:8002 <span class="hljs-keyword">for</span> demo
+        <div class="example">
+          <div class="example-dom" id="__exampleDom"></div>
 
-  atool-doc [options]
+          
 
-    -h, --help       output usage information
-    -v, --version    output the version number
-    --dest &lt;dir&gt;     config path of output dir, default __site
-    --source &lt;dir&gt;   config path of demo files dir, default examples
-    --tpl &lt;path&gt;     config path or name of tpl file
-    --config &lt;path&gt;  config path of webpack.config, default webpack.config.js
-    --port &lt;number&gt;  specify server port, default 8002
-    --build          only build
-    -w, --watch      using with --build, watch mode</code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
-<p>Use <code>.js</code> or <code>.md</code> files to write demo under the directory specified in <code>source</code></p>
-<h3 id="-md-"><code>.md</code></h3>
-<p><code>.md</code> is more powerful</p>
-<p>Write the code of demo with a section of <code>## code</code>, using language of <code>js/jsx/javascript</code>, <code>css</code> and <code>html</code> to customize css and dom</p>
-<p>And then write other things you want at other sections, eg:</p>
-<p><img src="https://cloud.githubusercontent.com/assets/5318333/14135283/309ee330-f68f-11e5-8d5f-fdd5a09f7fa9.png" alt="image"></p>
-<h3 id="-js-"><code>.js</code></h3>
-<p>Without customizing dom, you can also work with the hook dom <code>div#__exampleDom</code>, placeholder in default <a href="https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs">template file</a>, eg:</p>
-<p><img src="https://cloud.githubusercontent.com/assets/5318333/14135388/c00356fa-f68f-11e5-9766-00133479ec6a.png" alt="image"></p>
-<h2 id="template">Template</h2>
-<h3 id="supprted-templates">supprted templates</h3>
-<p>atool-doc support <a href="https://github.com/ant-tool/atool-doc/blob/master/src/constant.js">several template</a> file for different scenes:</p>
-<ul>
-<li>github: github theme, default one</li>
-</ul>
-<h3 id="customize-template">customize template</h3>
-<p>If the templates above can not meet your needs, just try writing a new one!</p>
-<ul>
-<li><p>use <code>atool-doc --tpl somewhere</code> to specify your template file</p>
-</li>
-<li><p>write your template file with following variables available <strong>on the context of <code>file</code></strong></p>
-<ul>
-<li><p><code>meta</code>: meta info of each example file, <code>{ name: &#39;something&#39;, someKey: &#39;someValue&#39; }</code></p>
-</li>
-<li><p><code>link</code>: link of all demo files, <code>{ demoName: &#39;demoPath&#39; }</code></p>
-</li>
-<li><p><code>title</code>: string of file-path, <code>examples/basic</code></p>
-</li>
-<li><p><code>resource</code>: kinds of path for resourceFile, <code>{ name: &#39;basicNameAndExt&#39;, relativeToCwd: &#39;relativePathToCwd&#39; }</code></p>
-</li>
-<li><p><code>script</code>: array of script-path need to insert into the html file, <code>[&#39;../common.js&#39;, &#39;./basic.js&#39;]</code></p>
-</li>
-<li><p><code>html</code>: string of html element, <code>&lt;div&gt;&lt;/div&gt;</code></p>
-</li>
-<li><p><code>style</code>: string of style by css, <code>body { color: red; }</code></p>
-</li>
-<li><p><code>desc</code>: code of demo and other things written by markdown, <code>&lt;h2&gt;code&lt;/h2&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;/div&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<p><em>The template file only support syntax of <code>ejs</code> currently</em></p>
-
+          <div class="example-scripts">
+            
+              <script src="../common.js"></script>
+            
+              <script src="loadDataFromMock.js"></script>
+            
+          </div>
         </div>
+
+        
+          <div class="boxed-group" id="desc">
+            <div class="markdown-body">
+              <h2>code</h2>
+<div class="highlight"><pre><code language=js>
+<span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = <span class="hljs-string">'loading...'</span>;
+
+fetch(<span class="hljs-string">'/something'</span>)
+  .then(res =&gt; {
+    <span class="hljs-keyword">if</span> (res.status &gt;= <span class="hljs-number">400</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Bad response from server"</span>);
+    }
+
+    res.json().then(json =&gt; {
+      <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = json.result;
+    });
+  });</code></pre></div>
+<h2>desc</h2>
+<p>This example show you how to use mock data, you can check the request in devTools</p>
+<p>Not support command with <code>--build</code> included currently</p>
+            </div>
+          </div>
+        
+
+        
       </div>
-      <a href="https://github.com/ant-tool/atool-doc"><img alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" style="position: absolute; top: 0; right: 0; border: 0;"></a>
-    </div>
   </body>
-
 </html>
