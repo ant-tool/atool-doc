@@ -51,6 +51,7 @@ export default function (options) {
     dora({
       port,
       plugins: [
+        'proxy',
         {
           'middleware.before'() {
             webpackConfig = getWebpackConfig(source, dest, cwd, tplPath, config);
