@@ -48,6 +48,7 @@
     "atool-doc-util": "~0.1.0",
     "atool-monitor": "0.x",
     "commander": "~2.9.0",
+    "dora-plugin-proxy": "~0.6.1",
     "glob": "~7.0.3",
     "html-webpack-plugin": "~2.9.0",
     "koa-webpack-dev-middleware": "~1.1.0",
@@ -63,6 +64,7 @@
     "eslint-plugin-jsx-a11y": "^0.6.2",
     "eslint-plugin-react": "^5.0.1",
     "gh-pages": "~0.11.0",
+    "isomorphic-fetch": "~2.2.1",
     "pre-commit": "~1.1.2"
   },
   "babel": {
