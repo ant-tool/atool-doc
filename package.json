@@ -62,7 +62,7 @@
     "eslint": "^2.0.0",
     "eslint-config-airbnb": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react": "~4.3.0",
     "gh-pages": "~0.11.0",
     "isomorphic-fetch": "~2.2.1",
     "pre-commit": "~1.1.2"
