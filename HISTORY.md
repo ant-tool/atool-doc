@@ -1,3 +1,11 @@
+## 0.4.0
+
+- feat: add watching for adding、unlinking files, restart automatically
+- update: dep of atool-build, to ~0.7.0
+- fix: webpackConfig.module.loaders[].loader is undefined
+- fix: menu style problem in element.ejs
+
+
 ## 0.3.0
 
 `2016-04-25`
