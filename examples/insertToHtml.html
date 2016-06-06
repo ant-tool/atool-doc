@@ -710,6 +710,10 @@
       .hljs-strong {
         font-weight: bold;
       }
+      
+      body {
+        height: 100%;
+      }
 
       .wrapper {
         margin-left: 7%;
@@ -726,12 +730,14 @@
 
       .demos-anchor {
         max-width: 230px;
+        height: 90%;
         width: calc(100% + 10px);
         right: 20px;
         position: fixed;
         color: #aaa;
         padding: 0;
         z-index: 100;
+        overflow-y: auto;
       }
 
       .menu {
@@ -865,6 +871,8 @@
           <a href="folder/a.html" class="menu-item">folder/a</a>
         
           <a href="" class="menu-item selected">insertToHtml</a>
+        
+          <a href="loadDataFromMock.html" class="menu-item">loadDataFromMock</a>
         
           <a href="loadStyleFile.html" class="menu-item">loadStyleFile</a>
         
