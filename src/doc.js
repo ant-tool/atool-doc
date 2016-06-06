@@ -4,6 +4,7 @@ import webpack from 'atool-build/lib/webpack';
 import dora from 'dora';
 import getWebpackConfig from './getWebpackConfig';
 import { tplSet } from './constant';
+import chokidar from 'chokidar';
 
 const root = join(__dirname, '..');
 
@@ -68,6 +69,20 @@ export default function (options) {
               publicPath: '/',
               quiet: true,
               ...this.query,
+            });
+          },
+          'server.after'() {
+            chokidar.watch([`${source}/**/*.md`, `${source}/**/*.js`, `${source}/**/*.jsx`], {
+              ignored: /node_modules/,
+              ignoreInitial: true,
+            }).on('add', path => {
+              console.log();
+              console.log(`atool-doc: add ${path}, restaring...`);
+              process.send('restart');
+            }).on('unlink', path => {
+              console.log();
+              console.log(`atool-doc: remove ${path}, restaring...`);
+              process.send('restart');
             });
           },
         },
