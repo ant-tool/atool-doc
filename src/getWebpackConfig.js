@@ -62,10 +62,23 @@ export default function (source, dest, cwd, tpl, config) {
   webpackConfig.resolve.modulesDirectories.push(join(root, 'node_modules'));
   webpackConfig.resolveLoader.modulesDirectories.push(join(root, 'node_modules'));
 
-  webpackConfig.module.loaders = webpackConfig.module.loaders.map(i => ({
-    ...i,
-    loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!!).)*!/, 'style!'),
-  }));
+  webpackConfig.module.loaders = webpackConfig.module.loaders.map(i => {
+    if (i.loader) {
+      return {
+        ...i,
+        loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!!).)*!/, 'style!'),
+      };
+    }
+    if (i.loaders) {
+      return {
+        ...i,
+        loaders: i.loaders.map(item =>
+          item.replace(/^.*extract-text-webpack-plugin\/loader.js((?!!).)*!/, 'style!')
+        ),
+      };
+    }
+    return i;
+  });
 
   webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 
