@@ -51,6 +51,7 @@ export default function (options) {
   } else {
     dora({
       port,
+      resolveDir: join(root, 'node_modules'),
       plugins: [
         'proxy',
         {
