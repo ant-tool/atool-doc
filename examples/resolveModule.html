@@ -874,8 +874,6 @@
         
           <a href="loadDataFromMock.html" class="menu-item">loadDataFromMock</a>
         
-          <a href="loadStyleFile.html" class="menu-item">loadStyleFile</a>
-        
           <a href="" class="menu-item selected">resolveModule</a>
         
       </ul>
@@ -901,24 +899,30 @@
           <div class="boxed-group" id="desc">
             <div class="markdown-body">
               <h2>code</h2>
-<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> num <span class="hljs-keyword">from</span> <span class="hljs-string">'./data.json'</span>;
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> <span class="hljs-string">'./resolveModule.less'</span>;
+<span class="hljs-comment">/*
+#__exampleDom {
+  color: red;
+}
+*/</span>
+<span class="hljs-keyword">import</span> num <span class="hljs-keyword">from</span> <span class="hljs-string">'./data.json'</span>;
+<span class="hljs-comment">/*
+{
+  "name": "atool-doc",
+  "desc": "static demo generator"
+}
+*/</span>
+<span class="hljs-keyword">import</span> data <span class="hljs-keyword">from</span> <span class="hljs-string">'!raw!./data.txt'</span>;
+<span class="hljs-comment">// this is a normal text file</span>
 
 <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = <span class="hljs-string">`
   &lt;h4&gt;Load by import&lt;/h4&gt;
   &lt;pre&gt;&lt;code&gt;<span class="hljs-subst">${JSON.stringify(num)}</span>&lt;/code&gt;&lt;/pre&gt;
+  &lt;pre&gt;&lt;code&gt;<span class="hljs-subst">${data}</span>&lt;/code&gt;&lt;/pre&gt;
 `</span>;</code></pre></div>
 <h2>desc</h2>
 <p>This example show you how to load modules by <code>import</code> or <code>require</code>;</p>
-<table><thead><tr><th>parameter</th>
-<th>desc</th>
-<th>type</th>
-<th>optional value</th>
-<th>default value</th></tr></thead>
-<tbody><tr><td>a</td>
-<td>this is a</td>
-<td>boolean</td>
-<td></td>
-<td>false</td></tr></tbody></table>
+<p>You can using other loaders to handle some specific file, like <code>import &#39;!raw!./data.txt&#39;</code>;</p>
             </div>
           </div>
         
