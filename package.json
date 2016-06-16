@@ -69,7 +69,8 @@
     "eslint-plugin-react": "~4.3.0",
     "gh-pages": "~0.11.0",
     "isomorphic-fetch": "~2.2.1",
-    "pre-commit": "~1.1.2"
+    "pre-commit": "~1.1.2",
+    "raw-loader": "~0.5.1"
   },
   "babel": {
     "presets": [
