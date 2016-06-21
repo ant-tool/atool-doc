@@ -12,10 +12,12 @@ Static demo generator based on [atool-build](https://github.com/ant-tool/atool-b
 ```
 ./
 ├── README.md
-└── examples
-    ├── a.js
-    ├── a.html
-    └── b.md
+├── examples
+│   ├── a.js
+│   ├── a.html
+│   └── b.md
+└── statics
+    └── data.json
 ```
 
 **after**
@@ -29,7 +31,9 @@ Static demo generator based on [atool-build](https://github.com/ant-tool/atool-b
 │   │   ├── a.js
 │   │   ├── b.html
 │   │   ├── b.js
-│   └── index.html
+│   ├── index.html
+│   └── statics
+│       └── data.json
 └── examples
     ├── a.js
     ├── a.html
@@ -70,6 +74,7 @@ $ npm i atool-doc -g
     -v, --version    output the version number
     --dest <dir>     config path of output dir, default __site
     --source <dir>   config path of demo files dir, default examples
+    --asset <dir>    config path of static resource, default statics
     --tpl <path>     config path or name of tpl file
     --config <path>  config path of webpack.config, default webpack.config.js
     --port <number>  specify server port, default 8002
