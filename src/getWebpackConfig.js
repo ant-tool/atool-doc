@@ -6,6 +6,7 @@ import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { marked } from 'atool-doc-util';
 import glob from 'glob';
+import Copy from 'copy-webpack-plugin';
 
 const root = path.join(__dirname, '..');
 
@@ -33,7 +34,7 @@ const getEntry = function (source) {
 };
 
 
-export default function (source, dest, cwd, tpl, config) {
+export default function (source, asset, dest, cwd, tpl, config) {
   const pkg = require(join(cwd, 'package.json'));
 
   const commonConfig = getWebpackCommonConfig({ cwd, devtool: '#inline-cheap-module-source-map' });
@@ -122,6 +123,7 @@ export default function (source, dest, cwd, tpl, config) {
     }),
     new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new Copy([{ from: asset, to: asset }]),
   ];
 
   return webpackConfig;

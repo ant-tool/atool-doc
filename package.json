@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
-    "dev": "./node_modules/.bin/babel src --out-dir lib --watch --ignore __tests__",
+    "dev": "./node_modules/.bin/babel src -s --out-dir lib --watch --ignore __tests__",
     "doc": "node bin/atool-doc.js --port 8987",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
@@ -49,6 +49,7 @@
     "atool-monitor": "0.x",
     "chokidar": "~1.5.1",
     "commander": "~2.9.0",
+    "copy-webpack-plugin": "^3.0.1",
     "dora-plugin-proxy": "~0.6.1",
     "glob": "~7.0.3",
     "html-webpack-plugin": "~2.9.0",

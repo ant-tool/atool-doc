@@ -9,7 +9,7 @@ import chokidar from 'chokidar';
 const root = join(__dirname, '..');
 
 export default function (options) {
-  const { source, dest, cwd, tpl, config, port } = options;
+  const { source, dest, cwd, tpl, config, port, asset } = options;
 
   const tplDefault = join(root, tplSet.github);
   let tplPath;
@@ -31,7 +31,7 @@ export default function (options) {
   let webpackConfig;
 
   if (options.build) {
-    webpackConfig = getWebpackConfig(source, dest, cwd, tplPath, config);
+    webpackConfig = getWebpackConfig(source, asset, dest, cwd, tplPath, config);
 
     const compiler = webpack(webpackConfig);
 
@@ -56,7 +56,7 @@ export default function (options) {
         'proxy',
         {
           'middleware.before'() {
-            webpackConfig = getWebpackConfig(source, dest, cwd, tplPath, config);
+            webpackConfig = getWebpackConfig(source, asset, dest, cwd, tplPath, config);
           },
           'middleware'() {
             const compiler = webpack(webpackConfig);
