@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>examples/loadDataFromMock copy 4.md</title>
+    <title>examples/loadFromStatic.md</title>
     <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
     <style type="text/css">
       @font-face {
@@ -710,6 +710,10 @@
       .hljs-strong {
         font-weight: bold;
       }
+      
+      body {
+        height: 100%;
+      }
 
       .wrapper {
         margin-left: 7%;
@@ -726,12 +730,14 @@
 
       .demos-anchor {
         max-width: 230px;
+        max-height: 90%;
         width: calc(100% + 10px);
         right: 20px;
         position: fixed;
         color: #aaa;
         padding: 0;
         z-index: 100;
+        overflow-y: auto;
       }
 
       .menu {
@@ -856,80 +862,26 @@
         
           <a href="../index.html" class="menu-item">Index</a>
         
-          <a href="alert copy 2.html" class="menu-item">alert copy 2</a>
-        
-          <a href="alert copy 3.html" class="menu-item">alert copy 3</a>
-        
-          <a href="alert copy.html" class="menu-item">alert copy</a>
-        
           <a href="alert.html" class="menu-item">alert</a>
-        
-          <a href="customDomAndStyle copy 2.html" class="menu-item">customDomAndStyle copy 2</a>
-        
-          <a href="customDomAndStyle copy 3.html" class="menu-item">customDomAndStyle copy 3</a>
-        
-          <a href="customDomAndStyle copy.html" class="menu-item">customDomAndStyle copy</a>
         
           <a href="customDomAndStyle.html" class="menu-item">customDomAndStyle</a>
         
-          <a href="customizeName copy 2.html" class="menu-item">customizeName copy 2</a>
-        
-          <a href="customizeName copy 3.html" class="menu-item">customizeName copy 3</a>
-        
-          <a href="customizeName copy.html" class="menu-item">customizeName copy</a>
-        
           <a href="customizeName.html" class="menu-item">customizeName</a>
-        
-          <a href="folder copy 2/a.html" class="menu-item">folder copy 2/a</a>
-        
-          <a href="folder copy 3/a.html" class="menu-item">folder copy 3/a</a>
-        
-          <a href="folder copy/a.html" class="menu-item">folder copy/a</a>
         
           <a href="folder/a.html" class="menu-item">folder/a</a>
         
-          <a href="insertToHtml copy 2.html" class="menu-item">insertToHtml copy 2</a>
-        
-          <a href="insertToHtml copy 3.html" class="menu-item">insertToHtml copy 3</a>
-        
-          <a href="insertToHtml copy 4.html" class="menu-item">insertToHtml copy 4</a>
-        
-          <a href="insertToHtml copy 5.html" class="menu-item">insertToHtml copy 5</a>
-        
-          <a href="insertToHtml copy.html" class="menu-item">insertToHtml copy</a>
-        
           <a href="insertToHtml.html" class="menu-item">insertToHtml</a>
-        
-          <a href="loadDataFromMock copy 2.html" class="menu-item">loadDataFromMock copy 2</a>
-        
-          <a href="loadDataFromMock copy 3.html" class="menu-item">loadDataFromMock copy 3</a>
-        
-          <a href="" class="menu-item selected">loadDataFromMock copy 4</a>
-        
-          <a href="loadDataFromMock copy.html" class="menu-item">loadDataFromMock copy</a>
         
           <a href="loadDataFromMock.html" class="menu-item">loadDataFromMock</a>
         
-          <a href="loadStyleFile copy 2.html" class="menu-item">loadStyleFile copy 2</a>
-        
-          <a href="loadStyleFile copy 3.html" class="menu-item">loadStyleFile copy 3</a>
-        
-          <a href="loadStyleFile copy.html" class="menu-item">loadStyleFile copy</a>
-        
-          <a href="loadStyleFile.html" class="menu-item">loadStyleFile</a>
-        
-          <a href="resolveModule copy 2.html" class="menu-item">resolveModule copy 2</a>
-        
-          <a href="resolveModule copy 3.html" class="menu-item">resolveModule copy 3</a>
-        
-          <a href="resolveModule copy.html" class="menu-item">resolveModule copy</a>
+          <a href="" class="menu-item selected">loadFromStatic</a>
         
           <a href="resolveModule.html" class="menu-item">resolveModule</a>
         
       </ul>
       <div class="wrapper-content">
         <div class="header">
-          <h1>examples/loadDataFromMock copy 4.md</h1>
+          <h1>examples/loadFromStatic.md</h1>
         </div>
         <div class="example">
           <div class="example-dom" id="__exampleDom"></div>
@@ -940,7 +892,7 @@
             
               <script src="../common.js"></script>
             
-              <script src="loadDataFromMock copy 4.js"></script>
+              <script src="loadFromStatic.js"></script>
             
           </div>
         </div>
@@ -954,19 +906,19 @@
 
 <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = <span class="hljs-string">'loading...'</span>;
 
-fetch(<span class="hljs-string">'/something'</span>)
+fetch(<span class="hljs-string">'/statics/result.json'</span>)
   .then(res =&gt; {
     <span class="hljs-keyword">if</span> (res.status &gt;= <span class="hljs-number">400</span>) {
       <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Bad response from server"</span>);
     }
 
     res.json().then(json =&gt; {
-      <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = json.result;
+      <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__exampleDom'</span>).innerHTML = json.name;
     });
   });</code></pre></div>
 <h2>desc</h2>
-<p>This example show you how to use mock data, you can check the request in devTools</p>
-<p>Conditions using command with <code>--build</code> included ara <strong>not supported</strong> currently</p>
+<p>This example show you how to load data from static assets, you can check the request in devTools</p>
+<p>The default assets folder is <code>statics</code>, you can using <code>atool-doc --asset someDir</code> to customize</p>
             </div>
           </div>
         

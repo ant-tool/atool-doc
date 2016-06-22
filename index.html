@@ -742,6 +742,12 @@
               </li>
             
               <li>
+                <a href="./examples/loadFromStatic.html">
+                  loadFromStatic
+                </a>
+              </li>
+            
+              <li>
                 <a href="./examples/resolveModule.html">
                   resolveModule
                 </a>
@@ -763,10 +769,12 @@
 <p><strong>before</strong></p>
 <div class="highlight"><pre><code language=stylus>./
 ├── README<span class="hljs-selector-class">.md</span>
-└── examples
-    ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
-    ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
-    └── <span class="hljs-selector-tag">b</span>.md</code></pre></div><p><strong>after</strong></p>
+├── examples
+│   ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
+│   ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
+│   └── <span class="hljs-selector-tag">b</span><span class="hljs-selector-class">.md</span>
+└── statics
+    └── data.json</code></pre></div><p><strong>after</strong></p>
 <div class="highlight"><pre><code language=stylus>./
 ├── README<span class="hljs-selector-class">.md</span>
 ├── __site
@@ -776,7 +784,9 @@
 │   │   ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
 │   │   ├── <span class="hljs-selector-tag">b</span><span class="hljs-selector-class">.html</span>
 │   │   ├── <span class="hljs-selector-tag">b</span><span class="hljs-selector-class">.js</span>
-│   └── index<span class="hljs-selector-class">.html</span>
+│   ├── index<span class="hljs-selector-class">.html</span>
+│   └── statics
+│       └── data<span class="hljs-selector-class">.json</span>
 └── examples
     ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>
     ├── <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.html</span>
@@ -798,6 +808,7 @@ $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/"
     -v, --version    output the version number
     --dest &lt;dir&gt;     config path of output dir, default __site
     --source &lt;dir&gt;   config path of demo files dir, default examples
+    --asset &lt;dir&gt;    config path of static resource, default statics
     --tpl &lt;path&gt;     config path or name of tpl file
     --config &lt;path&gt;  config path of webpack.config, default webpack.config.js
     --port &lt;number&gt;  specify server port, default 8002
