@@ -1,12 +1,11 @@
 import path, { join } from 'path';
-import { readFileSync, existsSync } from 'fs';
+import { existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
 import mergeCustomConfig from 'atool-build/lib/mergeCustomConfig';
 import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { marked } from 'atool-doc-util';
 import glob from 'glob';
 import Copy from 'copy-webpack-plugin';
+import Index from './index-webpack-plugin';
 
 const root = path.join(__dirname, '..');
 
@@ -111,19 +110,14 @@ export default function (source, asset, dest, cwd, tpl, config) {
         console.log('\nwebpack: bundle build is now finished.');
       }
     }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: join(root, '/tpl/index.ejs'),
-      inject: 'body',
-      chunks: [],
-      title: `${pkg.name}@${pkg.version}`,
-      homepage: pkg.homepage,
-      link,
-      readme: marked(readFileSync(join(cwd, 'README.md'), 'utf-8')),
-    }),
     new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new Copy([{ from: asset, to: asset }]),
+    new Index({
+      params: {
+        link,
+      },
+    }),
   ];
 
   return webpackConfig;

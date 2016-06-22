@@ -4,7 +4,7 @@
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
     <title>
-      <%= htmlWebpackPlugin.options.title %>
+      <%= PKG.name %>@<%= PKG.version %>
     </title>
     <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
     <style type="text/css">
@@ -543,7 +543,7 @@
         border-color: #4078c0;
       }
 
-      #readme,
+      .md-wrapper,
       .examples {
         min-width: 200px;
         max-width: 790px;
@@ -551,14 +551,14 @@
         padding: 0 30px;
       }
 
-      #readme .boxed-group {
+      .md-wrapper .boxed-group {
         position: relative;
         border-radius: 3px;
         margin-bottom: 30px;
       }
 
-      #readme .markdown-body,
-      #readme .plain,
+      .md-wrapper .markdown-body,
+      .md-wrapper .plain,
       .examples .examples-body {
         background-color: #fff;
         border: 1px solid #ddd;
@@ -691,22 +691,22 @@
         max-width: 790px;
         margin: 0 auto;
       }
-      <%=htmlWebpackPlugin.options.style %>
+      <%= file.style %>
     </style>
   </head>
 
   <body>
     <div>
       <div class="header">
-        <h1><%= htmlWebpackPlugin.options.title %></h1>
+        <h1><%= PKG.name %>@<%= PKG.version %></h1>
       </div>
       <div class="examples">
         <h3>EXAMPLES</h3>
         <div class="examples-body">
           <ul>
-            <% for(var key in htmlWebpackPlugin.options.link) {%>
+            <% for(var key in file.link) {%>
               <li>
-                <a href="./<%= htmlWebpackPlugin.options.link[key] %>.html">
+                <a href="./<%= file.link[key] %>.html">
                   <%= key %>
                 </a>
               </li>
@@ -714,13 +714,29 @@
           </ul>
         </div>
       </div>
-      <div class="boxed-group" id="readme">
+      <div class="boxed-group md-wrapper" id="readme">
         <h3>README.md</h3>
         <div class="markdown-body">
-          <%= htmlWebpackPlugin.options.readme %>
+          <%- README %>
         </div>
       </div>
-      <a href="<%= htmlWebpackPlugin.options.homepage %>"><img alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" style="position: absolute; top: 0; right: 0; border: 0;"></a>
+      <% if(HISTORY) { %>
+      <div class="boxed-group md-wrapper" id="history">
+        <h3>HISTORY.md</h3>
+        <div class="markdown-body">
+          <%- HISTORY %>
+        </div>
+      </div>
+      <% } %>
+      <% if(CHANGELOG) { %>
+      <div class="boxed-group md-wrapper" id="changelog">
+        <h3>CHANGELOG.md</h3>
+        <div class="markdown-body">
+          <%- CHNAGELOG %>
+        </div>
+      </div>
+      <% } %>
+      <a href="<%= PKG.homepage %>"><img alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" style="position: absolute; top: 0; right: 0; border: 0;"></a>
     </div>
   </body>
 

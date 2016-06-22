@@ -52,6 +52,7 @@
     "commander": "~2.9.0",
     "copy-webpack-plugin": "^3.0.1",
     "dora-plugin-proxy": "~0.6.1",
+    "ejs": "^2.4.2",
     "glob": "~7.0.3",
     "html-webpack-plugin": "~2.9.0",
     "koa-webpack-dev-middleware": "~1.1.0",
