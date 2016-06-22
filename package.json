@@ -26,6 +26,7 @@
     "atool-doc": "./bin/atool-doc.js"
   },
   "scripts": {
+    "start": "concurrently 'npm run dev' 'npm run doc'",
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
     "dev": "./node_modules/.bin/babel src -s --out-dir lib --watch --ignore __tests__",
     "doc": "node bin/atool-doc.js --port 8987",
@@ -63,6 +64,7 @@
     "babel-plugin-add-module-exports": "~0.1.2",
     "babel-preset-es2015": "~6.6.0",
     "babel-preset-stage-0": "~6.5.0",
+    "concurrently": "^2.1.0",
     "dora": "~0.3.2",
     "eslint": "^2.0.0",
     "eslint-config-airbnb": "^7.0.0",
