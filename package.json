@@ -1,6 +1,6 @@
 {
   "name": "atool-doc",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Static demo site generator based on atool-build & dora.",
   "keywords": [
     "atool",

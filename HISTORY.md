@@ -1,3 +1,8 @@
+## 0.5.0
+
+- feat: refactor htmlPlugin with index-webpack-plugin
+
+
 ## 0.4.0
 
 - feat: add watching for adding、unlinking files, restart automatically
