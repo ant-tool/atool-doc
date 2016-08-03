@@ -543,7 +543,7 @@
         border-color: #4078c0;
       }
 
-      #readme,
+      .md-wrapper,
       .examples {
         min-width: 200px;
         max-width: 790px;
@@ -551,14 +551,14 @@
         padding: 0 30px;
       }
 
-      #readme .boxed-group {
+      .md-wrapper .boxed-group {
         position: relative;
         border-radius: 3px;
         margin-bottom: 30px;
       }
 
-      #readme .markdown-body,
-      #readme .plain,
+      .md-wrapper .markdown-body,
+      .md-wrapper .plain,
       .examples .examples-body {
         background-color: #fff;
         border: 1px solid #ddd;
@@ -756,7 +756,7 @@
           </ul>
         </div>
       </div>
-      <div class="boxed-group" id="readme">
+      <div class="boxed-group md-wrapper" id="readme">
         <h3>README.md</h3>
         <div class="markdown-body">
           <h1 id="atool-doc">atool-doc</h1>
@@ -859,6 +859,42 @@ $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/"
 
         </div>
       </div>
+      
+      <div class="boxed-group md-wrapper" id="history">
+        <h3>HISTORY.md</h3>
+        <div class="markdown-body">
+          <h2 id="0-4-0">0.4.0</h2>
+<ul>
+<li>feat: add watching for adding、unlinking files, restart automatically</li>
+<li>update: dep of atool-build, to ~0.7.0</li>
+<li>fix: webpackConfig.module.loaders[].loader is undefined</li>
+<li>fix: menu style problem in element.ejs</li>
+</ul>
+<h2 id="0-3-0">0.3.0</h2>
+<p><code>2016-04-25</code></p>
+<ul>
+<li>change inline-source-map to inline-cheap-module-source-map</li>
+<li>add atool-monitor</li>
+<li>support specify template name, default is github</li>
+<li>change webpackConfig.tplSource to webpackConfig.demoSource</li>
+<li>add resource to context of file</li>
+<li>refine element.ejs</li>
+</ul>
+<h2 id="0-2-0">0.2.0</h2>
+<p><code>2016-04-13</code></p>
+<ul>
+<li>change postLoader to preLoader, fix <a href="https://github.com/ant-tool/atool-doc/issues/6">#6</a></li>
+<li>support directory demo files, <a href="https://github.com/ant-tool/atool-doc/issues/5">#5</a></li>
+<li>suppoer customizing port of dora</li>
+<li>support customizing title of each demo file</li>
+<li>add catalog in each element demo file</li>
+<li>add meta to context of file</li>
+</ul>
+
+        </div>
+      </div>
+      
+      
       <a href="https://github.com/ant-tool/atool-doc"><img alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" style="position: absolute; top: 0; right: 0; border: 0;"></a>
     </div>
   </body>
