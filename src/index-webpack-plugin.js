@@ -2,9 +2,10 @@ import { readFileSync, existsSync } from 'fs';
 import { render } from 'ejs';
 import { join } from 'path';
 import { marked } from 'atool-doc-util';
+const root = join(__dirname, '..');
 
 function addContentToAssets(content, filename, compilation) {
-  const assets = { compilation };
+  const { assets } = compilation;
   assets[filename] = {
     source: () => content,
     size: () => content.length,
@@ -24,7 +25,7 @@ export default function IndexWebpackPlugin(options) {
     fileDependencies: ['package.json', 'README.md', 'HISTORY.md', 'CHANGELOG.md'],
     contextDependencies: [],
     file: 'index.html',
-    template: 'tpl/index.ejs',
+    template: join(root, 'tpl/index.ejs'),
     params: {
       title: 'index.html',
     },
