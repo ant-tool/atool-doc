@@ -4,7 +4,8 @@ import { join } from 'path';
 import { marked } from 'atool-doc-util';
 
 function addContentToAssets(content, filename, compilation) {
-  compilation.assets[filename] = {        // disable no-param-reassign
+  const assets = { compilation };
+  assets[filename] = {
     source: () => content,
     size: () => content.length,
   };
@@ -37,6 +38,7 @@ export default function IndexWebpackPlugin(options) {
         README: marked(getFileContent('README.md')),
         CHANGELOG: marked(getFileContent('CHANGELOG.md')),
         HISTORY: marked(getFileContent('HISTORY.md')),
+        PKG: JSON.parse(getFileContent('package.json')),
       });
 
       addContentToAssets(content, file, compilation);
