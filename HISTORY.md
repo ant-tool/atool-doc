@@ -1,9 +1,14 @@
 ## 0.5.0
 
+`2016-08-03`
+
 - feat: refactor htmlPlugin with index-webpack-plugin
+- feat: dynamic load `package.json` `README.md` `HISTORY.md`
 
 
 ## 0.4.0
+
+`2016-06-06`
 
 - feat: add watching for adding、unlinking files, restart automatically
 - update: dep of atool-build, to ~0.7.0
