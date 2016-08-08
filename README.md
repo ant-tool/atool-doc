@@ -105,7 +105,7 @@ Without customizing dom, you can also work with the hook dom `div#__exampleDom`,
 
 ## Template
 
-### supprted templates
+### supported templates
 
 atool-doc support [several template](https://github.com/ant-tool/atool-doc/blob/master/src/constant.js) file for different scenes:
 
