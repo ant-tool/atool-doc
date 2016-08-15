@@ -66,14 +66,20 @@ export default function (source, asset, dest, cwd, tpl, config) {
     if (i.loader) {
       return {
         ...i,
-        loader: i.loader.replace(/^.*extract-text-webpack-plugin\/loader.js((?!!).)*!/, 'style!'),
+        loader: i.loader.replace(
+          /^.*extract-text-webpack-plugin(@\d+(\.\d+)+)?\/loader.js((?!!).)*!/,
+          'style!'
+        ),
       };
     }
     if (i.loaders) {
       return {
         ...i,
         loaders: i.loaders.map(item =>
-          item.replace(/^.*extract-text-webpack-plugin\/loader.js((?!!).)*!/, 'style!')
+          item.replace(
+            /^.*extract-text-webpack-plugin(@\d+(\.\d+)+)?\/loader.js((?!!).)*!/,
+            'style!'
+          ),
         ),
       };
     }
