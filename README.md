@@ -70,16 +70,17 @@ $ npm i atool-doc -g
 
   atool-doc [options]
 
-    -h, --help       output usage information
-    -v, --version    output the version number
-    --dest <dir>     config path of output dir, default __site
-    --source <dir>   config path of demo files dir, default examples
-    --asset <dir>    config path of static resource, default statics
-    --tpl <path>     config path or name of tpl file
-    --config <path>  config path of webpack.config, default webpack.config.js
-    --port <number>  specify server port, default 8002
-    --build          only build
-    -w, --watch      using with --build, watch mode
+    -h, --help                 output usage information
+    -v, --version              output the version number
+    --dest <dir>               config path of output dir, default __site
+    --source <dir>             config path of demo files dir, default examples
+    --asset <dir>              config path of static resource, default statics
+    --tpl <path>               config path or name of tpl file
+    --config <path>            config path of webpack.config, default webpack.config.js
+    --port <number>            specify dora server port, default 8002
+    --doraPlugins <name|file>  defines the plugins which should used with dora server, default proxy
+    --build                    only build
+    -w, --watch                using with --build, watch mode
 ```
 
 ## How to write demo file
