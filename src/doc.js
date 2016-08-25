@@ -58,7 +58,6 @@ export default function (options) {
       port,
       resolveDir: join(root, 'node_modules'),
       plugins: [
-        ...plugins.filter(item => item !== 'webpack' && item !== 'dora-plugin-webpack'),
         {
           'middleware.before'() {
             webpackConfig = getWebpackConfig(source, asset, dest, cwd, tplPath, config);
@@ -92,6 +91,7 @@ export default function (options) {
             });
           },
         },
+        ...plugins.filter(item => item !== 'webpack' && item !== 'dora-plugin-webpack'),
       ],
     });
   }
