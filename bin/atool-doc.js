@@ -24,7 +24,8 @@ if (!process.send) {
     .option('--asset <dir>', 'config path of static resource, default statics', 'statics')
     .option('--tpl <path>', 'config path or name of tpl file')
     .option('--config <path>', 'config path of webpack.config, default webpack.config.js', 'webpack.config.js')
-    .option('--port <number>', 'specify server port, default 8002', '8002')
+    .option('--port <number>', 'specify dora server port, default 8002', '8002')
+    .option('--doraPlugins <name|file>', 'defines the plugins which should used with dora server, default proxy', 'proxy')
     .option('--build', 'only build')
     .option('-w, --watch', 'using with --build, watch mode')
     .parse(process.argv);

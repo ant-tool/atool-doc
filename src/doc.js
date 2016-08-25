@@ -9,7 +9,12 @@ import chokidar from 'chokidar';
 const root = join(__dirname, '..');
 
 export default function (options) {
-  const { source, dest, cwd, tpl, config, port, asset } = options;
+  const { source, dest, cwd, tpl, config, port, asset, doraPlugins } = options;
+
+  const plugins = doraPlugins ? doraPlugins.split(',') : [];
+  if (plugins.indexOf('webpack') !== -1) {
+    console.warn('no need to add dora-plugin-webpack, ignore it');
+  }
 
   const tplDefault = join(root, tplSet.github);
   let tplPath;
@@ -53,7 +58,7 @@ export default function (options) {
       port,
       resolveDir: join(root, 'node_modules'),
       plugins: [
-        'proxy',
+        ...plugins.filter(item => item !== 'webpack' && item !== 'dora-plugin-webpack'),
         {
           'middleware.before'() {
             webpackConfig = getWebpackConfig(source, asset, dest, cwd, tplPath, config);
