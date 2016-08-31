@@ -44,9 +44,6 @@
     "webpack": "~1.12.2"
   },
   "dependencies": {
-    "atool-doc-js-loader": "~0.1.0",
-    "atool-doc-md-loader": "~0.2.0",
-    "atool-doc-util": "~0.1.0",
     "atool-monitor": "0.x",
     "chokidar": "~1.5.1",
     "commander": "~2.9.0",
@@ -54,8 +51,13 @@
     "dora-plugin-proxy": "~0.6.1",
     "ejs": "^2.4.2",
     "glob": "~7.0.3",
+    "highlight.js": "~9.2.0",
     "html-webpack-plugin": "~2.9.0",
     "koa-webpack-dev-middleware": "~1.1.0",
+    "loader-utils": "~0.2.12",
+    "mark-twain": "~0.2.0-beta.4",
+    "marked": "~0.3.5",
+    "ramda": "~0.19.1",
     "style-loader": "~0.13.0"
   },
   "devDependencies": {

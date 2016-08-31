@@ -90,13 +90,21 @@ export default function (source, asset, dest, cwd, tpl, config) {
 
   webpackConfig.module.preLoaders.push({
     test: /\.md$/,
-    loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-md-loader?template=${tpl}`,
+    loader: `babel?${
+      JSON.stringify(webpackConfig.babel)
+    }!${
+      join(__dirname, './loaders/md-loader')
+    }?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
   webpackConfig.module.preLoaders.push({
     test: /\.(jsx|js)$/,
-    loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-js-loader?template=${tpl}`,
+    loader: `babel?${
+      JSON.stringify(webpackConfig.babel)
+    }!${
+      join(__dirname, './loaders/js-loader')
+    }?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
