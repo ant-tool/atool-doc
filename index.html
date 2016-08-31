@@ -4,7 +4,7 @@
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
     <title>
-      atool-doc@0.5.2
+      atool-doc@0.6.0
     </title>
     <link href="//os.alipayobjects.com/rmsportal/iUKcdtKUFtONTig.css" rel="stylesheet"/>
     <style type="text/css">
@@ -698,7 +698,7 @@
   <body>
     <div>
       <div class="header">
-        <h1>atool-doc@0.5.2</h1>
+        <h1>atool-doc@0.6.0</h1>
       </div>
       <div class="examples">
         <h3>EXAMPLES</h3>
@@ -804,16 +804,17 @@ $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/"
 
   atool-doc [options]
 
-    -h, --help       output usage information
-    -v, --version    output the version number
-    --dest &lt;dir&gt;     config path of output dir, default __site
-    --source &lt;dir&gt;   config path of demo files dir, default examples
-    --asset &lt;dir&gt;    config path of static resource, default statics
-    --tpl &lt;path&gt;     config path or name of tpl file
-    --config &lt;path&gt;  config path of webpack.config, default webpack.config.js
-    --port &lt;number&gt;  specify server port, default 8002
-    --build          only build
-    -w, --watch      using with --build, watch mode</code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
+    -h, --help                 output usage information
+    -v, --version              output the version number
+    --dest &lt;dir&gt;               config path of output dir, default __site
+    --source &lt;dir&gt;             config path of demo files dir, default examples
+    --asset &lt;dir&gt;              config path of static resource, default statics
+    --tpl &lt;path&gt;               config path or name of tpl file
+    --config &lt;path&gt;            config path of webpack.config, default webpack.config.js
+    --port &lt;number&gt;            specify dora server port, default 8002
+    --doraPlugins &lt;name|file&gt;  defines the plugins <span class="hljs-built_in">which</span> should used with dora server, default proxy
+    --build                    only build
+    -w, --watch                using with --build, watch mode</code></pre></div><h2 id="how-to-write-demo-file">How to write demo file</h2>
 <p>Use <code>.js</code> or <code>.md</code> files to write demo under the directory specified in <code>source</code></p>
 <h3 id="-md-"><code>.md</code></h3>
 <p><code>.md</code> is more powerful</p>
@@ -863,7 +864,12 @@ $ npm run demo</code></pre></div><p>Then, visit <a href="http://127.0.0.1:8002/"
       <div class="boxed-group md-wrapper" id="history">
         <h3>HISTORY.md</h3>
         <div class="markdown-body">
-          <h2 id="0-5-2">0.5.2</h2>
+          <h2 id="0-6-0">0.6.0</h2>
+<p><code>2016-08-31</code></p>
+<ul>
+<li>feat: open doraPlugins to bin, using by --doraPlugins proxy?port=9999</li>
+</ul>
+<h2 id="0-5-2">0.5.2</h2>
 <p><code>2016-08-15</code></p>
 <ul>
 <li>fix: compatibility for npm@4</li>
