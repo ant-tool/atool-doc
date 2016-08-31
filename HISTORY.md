@@ -1,3 +1,10 @@
+## 0.6.0
+
+`2016-08-31`
+
+- feat: open doraPlugins to bin, using by --doraPlugins proxy?port=9999
+
+
 ## 0.5.2
 
 `2016-08-15`
