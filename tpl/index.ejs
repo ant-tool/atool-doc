@@ -707,7 +707,7 @@
             <% for(var key in file.link) {%>
               <li>
                 <a href="./<%= file.link[key] %>.html">
-                  <%= key %>
+                  <%= alias[key] || key %>
                 </a>
               </li>
             <% } %>

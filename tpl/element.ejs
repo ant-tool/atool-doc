@@ -860,7 +860,7 @@
     <div class="wrapper">
       <ul class="demos-anchor menu">
         <% for(var key in file.link) { var self = key === file.resource.relativeToDemo %>
-          <a href="<%= self ? '' : file.link[key] + '.html' %>" class="menu-item<%= self ? ' selected' : '' %>"><%= key %></a>
+          <a href="<%= self ? '' : file.link[key] + '.html' %>" class="menu-item<%= self ? ' selected' : '' %>"><%= file.alias[key] || key %></a>
         <% } %>
       </ul>
       <div class="wrapper-content">

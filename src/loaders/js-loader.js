@@ -13,8 +13,6 @@ function calculateHtmlPath(cwd, source) {
 }
 
 module.exports = function (content) {
-  if (this.cacheable) this.cacheable();
-
   const options = this.options;
   const resourcePath = this.resourcePath;
   const resource = new util.Resource(options.cwd, options.demoSource, resourcePath);
@@ -52,6 +50,7 @@ module.exports = function (content) {
         },
         children: content,
       }]),
+      alias: this._compiler.docSet.fileAlias,
     },
   });
 
