@@ -1,3 +1,11 @@
+## 0.7.0
+
+`2016-09-18`
+
+- refactor: inline loader and utils
+- feat: support customize file title in *.md files
+- refine: template style
+
 ## 0.6.0
 
 `2016-08-31`
