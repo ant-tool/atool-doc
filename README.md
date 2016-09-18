@@ -124,7 +124,9 @@ If the templates above can not meet your needs, just try writing a new one!
 
   - `link`: link of all demo files, `{ demoName: 'demoPath' }`
 
-  - `title`: string of file-path, `examples/basic`
+  - `title`: file-path relative to `source` dir, `examples/basic`
+
+  - `filePath`: string of file-path, `examples/basic`
 
   - `resource`: kinds of path for resourceFile, `{ name: 'basicNameAndExt', relativeToCwd: 'relativePathToCwd' }`
 

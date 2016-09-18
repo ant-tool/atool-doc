@@ -57,7 +57,8 @@ module.exports = function (content) {
     file: {
       meta,
       link,
-      title: meta.title || resource.relativeToCwd + resource.ext,
+      title: resource.relativeToDemo,
+      filePath: resource.relativeToCwd + resource.ext,
       resource,
       // script: common ? scripts : scripts.slice(1),
       script: scripts,
