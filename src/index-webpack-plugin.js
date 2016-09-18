@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from 'fs';
 import { render } from 'ejs';
 import { join } from 'path';
-import { marked } from 'atool-doc-util';
+import { marked } from './utils';
 import mt from 'mark-twain';
 const root = join(__dirname, '..');
 

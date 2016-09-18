@@ -87,7 +87,7 @@ $ npm i atool-doc -g
 
 Use `.js` or `.md` files to write demo under the directory specified in `source`
 
-### `.md`
+- ### `md`
 
 `.md` is more powerful
 
@@ -97,7 +97,7 @@ And then write other things you want at other sections, eg:
 
 ![image](https://cloud.githubusercontent.com/assets/5318333/14135283/309ee330-f68f-11e5-8d5f-fdd5a09f7fa9.png)
 
-### `.js`
+- ### `js`
 
 Without customizing dom, you can also work with the hook dom `div#__exampleDom`, placeholder in default [template file](https://github.com/ant-tool/atool-doc/blob/master/tpl/element.ejs), eg:
 
@@ -120,22 +120,17 @@ If the templates above can not meet your needs, just try writing a new one!
 
 - write your template file with following variables available **on the context of `file`**
 
-  - `meta`: meta info of each example file, `{ name: 'something', someKey: 'someValue' }`
-
-  - `link`: link of all demo files, `{ demoName: 'demoPath' }`
-
-  - `title`: file-path relative to `source` dir, `examples/basic`
-
-  - `filePath`: string of file-path, `examples/basic`
-
-  - `resource`: kinds of path for resourceFile, `{ name: 'basicNameAndExt', relativeToCwd: 'relativePathToCwd' }`
-
-  - `script`: array of script-path need to insert into the html file, `['../common.js', './basic.js']`
-
-  - `html`: string of html element, `<div></div>`
-
-  - `style`: string of style by css, `body { color: red; }`
-
-  - `desc`: code of demo and other things written by markdown, `<h2>code</h2><div class="highlight"></div>`
+|param|decription|format|
+|:---:|:--------:|:----:|
+|meta|meta info of each example file|`{ name: 'something', someKey: 'someValue' }`|
+|link|link of all demo files|`{ demoName: 'demoPath' }`|
+|title|file-path relative to `source` dir|`basic`|
+|filePath|string of file-path|`examples/basic`|
+|resource|kinds of path for resourceFile|`{ name: 'basicNameAndExt', relativeToCwd: 'relativePathToCwd' }`|
+|script|array of script-path need to insert into the html file|`['../common.js', './basic.js']`|
+|html|string of html element|`<div></div>`|
+|style|string of style by css|`body { color: red; }`|
+|desc|code of demo and other things written by markdown|`<h2>code</h2><div class="highlight"></div>`|
+|alias|alias of each file, generating by meta.title|see [meta config](https://raw.githubusercontent.com/ant-tool/atool-doc/master/examples/customizeName.md)|
 
 *The template file only support syntax of `ejs` currently*

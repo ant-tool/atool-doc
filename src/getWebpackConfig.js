@@ -131,6 +131,7 @@ export default function (source, asset, dest, cwd, tpl, config) {
       params: {
         link,
       },
+      title: 'title',
     }),
   ];
 
