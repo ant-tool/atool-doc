@@ -51,9 +51,9 @@ Visit https://ant-tool.github.io/atool-doc/
 ```bash
 $ git clone git@github.com:ant-tool/atool-doc.git
 $ cd atool-doc && npm i
-$ npm run demo
+$ npm run doc
 ```
-Then, visit http://127.0.0.1:8002/
+Then, visit http://127.0.0.1:8989/
 
 ## Usage
 

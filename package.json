@@ -29,7 +29,7 @@
     "start": "concurrently 'npm run dev' 'npm run doc'",
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
     "dev": "./node_modules/.bin/babel src -s --out-dir lib --watch --ignore __tests__",
-    "doc": "node bin/atool-doc.js --port 8987",
+    "doc": "node bin/atool-doc.js --doraPlugins proxy --port 8987",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
     "gh-pages": "npm run doc -- --build && gh-pages -d __site",
