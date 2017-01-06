@@ -1,6 +1,6 @@
 {
   "name": "atool-doc",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Static demo site generator based on atool-build & dora.",
   "keywords": [
     "atool",
@@ -40,8 +40,7 @@
   },
   "peerDependencies": {
     "atool-build": "~0.7.0",
-    "dora": "~0.3.0",
-    "webpack": "~1.12.2"
+    "dora": "~0.3.0"
   },
   "dependencies": {
     "atool-monitor": "0.x",

@@ -1,3 +1,9 @@
+## 0.7.1
+
+`2017-01-06`
+
+- chore: remove peerDeps of webpack
+
 ## 0.7.0
 
 `2016-09-18`
