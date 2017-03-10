@@ -1,3 +1,9 @@
+## 0.7.3
+
+`2017-03-10`
+
+- fix: correct display in mobile for viewport
+
 ## 0.7.2
 
 `2017-03-06`
