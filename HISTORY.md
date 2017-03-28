@@ -1,5 +1,11 @@
 ## 0.7.3
 
+`2017-03-28`
+
+- fix: modify output.path only, revert output.publicPath
+
+## 0.7.3
+
 `2017-03-10`
 
 - fix: correct display in mobile for viewport
