@@ -49,7 +49,7 @@ export default function (source, asset, dest, cwd, tpl, config) {
   webpackConfig.output = {
     path: join(cwd, dest),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: '../',
   };
   webpackConfig.cwd = cwd;
   webpackConfig.demoSource = source;
