@@ -2,7 +2,8 @@ import path, { join } from 'path';
 import { existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
 import mergeCustomConfig from 'atool-build/lib/mergeCustomConfig';
-import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
+import { ProgressPlugin } from 'atool-build/lib/webpack';
+import { ExtractTextPlugin } from 'atool-build/lib/dependencies';
 import glob from 'glob';
 import Copy from 'copy-webpack-plugin';
 import Index from './index-webpack-plugin';
@@ -110,27 +111,22 @@ export default function (source, asset, dest, cwd, tpl, config) {
     link[path.relative(source, key)] = key;
   });
 
-  webpackConfig.plugins = [
-    new ProgressPlugin((percentage, msg) => {
-      const stream = process.stderr;
-      if (stream.isTTY && percentage < 0.71) {
-        stream.cursorTo(0);
-        stream.write(`📦   ${msg}`);
-        stream.clearLine(1);
-      } else if (percentage === 1) {
-        console.log('\nwebpack: bundle build is now finished.');
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new Copy([{ from: asset, to: asset }]),
-    new Index({
-      params: {
-        link,
-      },
-      title: 'title',
-    }),
-  ];
+  webpackConfig.plugins = webpackConfig.plugins
+    .filter(plugin => !(plugin instanceof ExtractTextPlugin))
+    .concat(
+      new ProgressPlugin((percentage, msg) => {
+        const stream = process.stderr;
+        if (stream.isTTY && percentage < 0.71) {
+          stream.cursorTo(0);
+          stream.write(`📦   ${msg}`);
+          stream.clearLine(1);
+        } else if (percentage === 1) {
+          console.log('\nwebpack: bundle build is now finished.');
+        }
+      }),
+      new Copy([{ from: asset, to: asset }]),
+      new Index({ params: { link }, title: 'title' }),
+    );
   webpackConfig.externals = {};
   return webpackConfig;
 }
