@@ -110,7 +110,7 @@ export default function (source, asset, dest, cwd, tpl, config) {
     link[path.relative(source, key)] = key;
   });
 
-  webpackConfig.plugins.push(
+  webpackConfig.plugins = [
     new ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
       if (stream.isTTY && percentage < 0.71) {
@@ -130,7 +130,7 @@ export default function (source, asset, dest, cwd, tpl, config) {
       },
       title: 'title',
     }),
-  );
+  ];
   webpackConfig.externals = {};
   return webpackConfig;
 }
