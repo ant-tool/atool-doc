@@ -51,10 +51,10 @@ export default function (source, asset, dest, cwd, tpl, config) {
   webpackConfig.demoSource = source;
 
   webpackConfig.resolve.root = cwd;
-  webpackConfig.resolve.alias = {
+  webpackConfig.resolve.alias = Object.assign({}, webpackConfig.resolve.alias, {
     [`${pkg.name}$`]: join(cwd, 'index.js'),
     [pkg.name]: cwd,
-  };
+  });
 
   webpackConfig.resolve.modulesDirectories.push(join(root, 'node_modules'));
   webpackConfig.resolveLoader.modulesDirectories.push(join(root, 'node_modules'));
