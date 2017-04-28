@@ -5,13 +5,13 @@ webpackJsonp([4,0],{
 
 	'use strict';
 
-	var _insert = __webpack_require__(10);
+	var _insert = __webpack_require__(13);
 
 		(0, _insert.insert)(document.getElementById('__element'));
 
 /***/ }),
 
-/***/ 10:
+/***/ 13:
 /***/ (function(module, exports) {
 
 	'use strict';
