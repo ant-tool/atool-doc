@@ -1,6 +1,6 @@
-## 0.8.0
+## 0.8.1
 
-`2017-04-18`
+`2017-04-28`
 
 - refactor: not replace webpackConfig.plugins any more, all user to customize
 
