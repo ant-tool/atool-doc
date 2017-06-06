@@ -1,3 +1,10 @@
+## 0.8.2
+
+`2017-06-06`
+
+- fix: not load common.js if no webpack.optimize.CommonsChunkPlugin in loaders
+
+
 ## 0.8.1
 
 `2017-04-28`
