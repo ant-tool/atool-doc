@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const loaderUtils = require('loader-utils');
-// const webpack = require('webpack');
+const webpack = require('atool-build/lib/webpack');
 const mt = require('mark-twain');
 const R = require('ramda');
 const ejs = require('ejs');
@@ -37,12 +37,10 @@ module.exports = function (content) {
   const tpl = query.template;
   this.addDependency(tpl);
 
-  // const common = options.plugins.some(function(i) {
-  //   return i instanceof webpack.optimize.CommonsChunkPlugin;
-  // });
+  const hasCommon = options.plugins.some(i => i instanceof webpack.optimize.CommonsChunkPlugin);
 
   const scripts = [
-    path.relative(resourcePath, path.join(resource.demoPath, 'common.js')),
+    ...(hasCommon ? [path.relative(resourcePath, path.join(resource.demoPath, 'common.js'))] : []),
     `${resource.name}.js`,
   ];
 

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const loaderUtils = require('loader-utils');
+const webpack = require('atool-build/lib/webpack');
 const ejs = require('ejs');
 
 const util = require('../utils');
@@ -22,8 +23,10 @@ module.exports = function (content) {
   const tpl = query.template;
   this.addDependency(tpl);
 
+  const hasCommon = options.plugins.some(i => i instanceof webpack.optimize.CommonsChunkPlugin);
+
   const scripts = [
-    path.relative(resourcePath, path.join(resource.demoPath, 'common.js')),
+    ...(hasCommon ? [path.relative(resourcePath, path.join(resource.demoPath, 'common.js'))] : []),
     `${resource.name}.js`,
   ];
 
