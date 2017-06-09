@@ -1,5 +1,5 @@
 ---
-title: customize
+title: This is a customized name, I'm the longest one, ahhhhhh
 language: en
 ---
 

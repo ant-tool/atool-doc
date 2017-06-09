@@ -2,7 +2,8 @@ import path, { join } from 'path';
 import { existsSync } from 'fs';
 import getWebpackCommonConfig from 'atool-build/lib/getWebpackCommonConfig';
 import mergeCustomConfig from 'atool-build/lib/mergeCustomConfig';
-import webpack, { ProgressPlugin } from 'atool-build/lib/webpack';
+import { ProgressPlugin } from 'atool-build/lib/webpack';
+import { ExtractTextPlugin } from 'atool-build/lib/dependencies';
 import glob from 'glob';
 import Copy from 'copy-webpack-plugin';
 import Index from './index-webpack-plugin';
@@ -46,18 +47,15 @@ export default function (source, asset, dest, cwd, tpl, config) {
   const entry = getEntry(source);
 
   webpackConfig.entry = entry;
-  webpackConfig.output = {
-    path: join(cwd, dest),
-    filename: '[name].js',
-  };
+  webpackConfig.output.path = join(cwd, dest);
   webpackConfig.cwd = cwd;
   webpackConfig.demoSource = source;
 
   webpackConfig.resolve.root = cwd;
-  webpackConfig.resolve.alias = {
+  webpackConfig.resolve.alias = Object.assign({}, webpackConfig.resolve.alias, {
     [`${pkg.name}$`]: join(cwd, pkg.main || 'index.js'),
     [pkg.name]: cwd,
-  };
+  });
 
   webpackConfig.resolve.modulesDirectories.push(join(root, 'node_modules'));
   webpackConfig.resolveLoader.modulesDirectories.push(join(root, 'node_modules'));
@@ -94,13 +92,21 @@ export default function (source, asset, dest, cwd, tpl, config) {
 
   webpackConfig.module.preLoaders.push({
     test: /\.md$/,
-    loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-md-loader?template=${tpl}`,
+    loader: `babel?${
+      JSON.stringify(webpackConfig.babel)
+    }!${
+      join(__dirname, './loaders/md-loader')
+    }?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
   webpackConfig.module.preLoaders.push({
     test: /\.(jsx|js)$/,
-    loader: `babel?${JSON.stringify(webpackConfig.babel)}!atool-doc-js-loader?template=${tpl}`,
+    loader: `babel?${
+      JSON.stringify(webpackConfig.babel)
+    }!${
+      join(__dirname, './loaders/js-loader')
+    }?template=${tpl}`,
     include: path.join(cwd, source),
   });
 
@@ -109,26 +115,22 @@ export default function (source, asset, dest, cwd, tpl, config) {
     link[path.relative(source, key)] = key;
   });
 
-  webpackConfig.plugins = [
-    new ProgressPlugin((percentage, msg) => {
-      const stream = process.stderr;
-      if (stream.isTTY && percentage < 0.71) {
-        stream.cursorTo(0);
-        stream.write(`📦   ${msg}`);
-        stream.clearLine(1);
-      } else if (percentage === 1) {
-        console.log('\nwebpack: bundle build is now finished.');
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new Copy([{ from: asset, to: asset }]),
-    new Index({
-      params: {
-        link,
-      },
-    }),
-  ];
-
+  webpackConfig.plugins = webpackConfig.plugins
+    .filter(plugin => !(plugin instanceof ExtractTextPlugin))
+    .concat(
+      new ProgressPlugin((percentage, msg) => {
+        const stream = process.stderr;
+        if (stream.isTTY && percentage < 0.71) {
+          stream.cursorTo(0);
+          stream.write(`📦   ${msg}`);
+          stream.clearLine(1);
+        } else if (percentage === 1) {
+          console.log('\nwebpack: bundle build is now finished.');
+        }
+      }),
+      new Copy([{ from: asset, to: asset }]),
+      new Index({ params: { link }, title: 'title' }),
+    );
+  webpackConfig.externals = {};
   return webpackConfig;
 }

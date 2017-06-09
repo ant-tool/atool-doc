@@ -1,6 +1,6 @@
 {
   "name": "atool-doc",
-  "version": "0.5.2",
+  "version": "0.8.2",
   "description": "Static demo site generator based on atool-build & dora.",
   "keywords": [
     "atool",
@@ -29,7 +29,7 @@
     "start": "concurrently 'npm run dev' 'npm run doc'",
     "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib --ignore __tests__",
     "dev": "./node_modules/.bin/babel src -s --out-dir lib --watch --ignore __tests__",
-    "doc": "node bin/atool-doc.js --port 8987",
+    "doc": "node bin/atool-doc.js --doraPlugins proxy --port 8987",
     "lint": "eslint src",
     "eslint-fix": "eslint --fix src",
     "gh-pages": "npm run doc -- --build && gh-pages -d __site",
@@ -39,14 +39,10 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "peerDependencies": {
-    "atool-build": "~0.7.0",
-    "dora": "~0.3.0",
-    "webpack": "~1.12.2"
+    "atool-build": "~0.11.0",
+    "dora": "~0.3.0"
   },
   "dependencies": {
-    "atool-doc-js-loader": "~0.1.0",
-    "atool-doc-md-loader": "~0.2.0",
-    "atool-doc-util": "~0.1.0",
     "atool-monitor": "0.x",
     "chokidar": "~1.5.1",
     "commander": "~2.9.0",
@@ -54,12 +50,17 @@
     "dora-plugin-proxy": "~0.6.1",
     "ejs": "^2.4.2",
     "glob": "~7.0.3",
+    "highlight.js": "~9.2.0",
     "html-webpack-plugin": "~2.9.0",
     "koa-webpack-dev-middleware": "~1.1.0",
+    "loader-utils": "~0.2.12",
+    "mark-twain": "~0.2.0-beta.4",
+    "marked": "~0.3.5",
+    "ramda": "~0.19.1",
     "style-loader": "~0.13.0"
   },
   "devDependencies": {
-    "atool-build": "~0.7.5",
+    "atool-build": "~0.11.0",
     "babel-cli": "~6.6.5",
     "babel-eslint": "^6.0.4",
     "babel-plugin-add-module-exports": "~0.1.2",

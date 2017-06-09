@@ -1,3 +1,55 @@
+## 0.8.2
+
+`2017-06-06`
+
+- fix: not load common.js if no webpack.optimize.CommonsChunkPlugin in loaders
+
+
+## 0.8.1
+
+`2017-04-28`
+
+- refactor: not replace webpackConfig.plugins any more, all user to customize
+
+## 0.7.3
+
+`2017-03-28`
+
+- fix: modify output.path only, revert output.publicPath
+
+## 0.7.3
+
+`2017-03-10`
+
+- fix: correct display in mobile for viewport
+
+## 0.7.2
+
+`2017-03-06`
+
+- fix: add output.publicPath of '/'
+
+## 0.7.1
+
+`2017-01-06`
+
+- chore: remove peerDeps of webpack
+
+## 0.7.0
+
+`2016-09-18`
+
+- refactor: inline loader and utils
+- feat: support customize file title in *.md files
+- refine: template style
+
+## 0.6.0
+
+`2016-08-31`
+
+- feat: open doraPlugins to bin, using by --doraPlugins proxy?port=9999
+
+
 ## 0.5.2
 
 `2016-08-15`
