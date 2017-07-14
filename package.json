@@ -1,6 +1,6 @@
 {
   "name": "atool-doc",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Static demo site generator based on atool-build & dora.",
   "keywords": [
     "atool",
@@ -57,6 +57,7 @@
     "mark-twain": "~0.2.0-beta.4",
     "marked": "~0.3.5",
     "ramda": "~0.19.1",
+    "source-map-loader": "^0.2.1",
     "style-loader": "~0.13.0"
   },
   "devDependencies": {

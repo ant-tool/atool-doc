@@ -1,3 +1,9 @@
+## 0.9.0
+
+`2017-07-14`
+
+- [break]: resolve packageName to real main file(pkg.main || index.js), if use babel to compile into main file, `babel -s` to open sourcemap is very useful for debug
+
 ## 0.8.2
 
 `2017-06-06`
