@@ -16,7 +16,7 @@
     "url": "https://github.com/ant-tool/atool-doc/issues"
   },
   "license": "ISC",
-  "main": "index.js",
+  "main": "./lib/doc.js",
   "files": [
     "lib",
     "bin",

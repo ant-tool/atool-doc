@@ -53,7 +53,7 @@ export default function (source, asset, dest, cwd, tpl, config) {
 
   webpackConfig.resolve.root = cwd;
   webpackConfig.resolve.alias = Object.assign({}, webpackConfig.resolve.alias, {
-    [`${pkg.name}$`]: join(cwd, 'index.js'),
+    [`${pkg.name}$`]: join(cwd, pkg.main || 'index.js'),
     [pkg.name]: cwd,
   });
 
@@ -85,6 +85,10 @@ export default function (source, asset, dest, cwd, tpl, config) {
   });
 
   webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
+  webpackConfig.module.preLoaders.push({
+    test: /\.js$/,
+    loader: 'source-map-loader',
+  });
 
   webpackConfig.module.preLoaders.push({
     test: /\.md$/,
