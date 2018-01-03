@@ -1,3 +1,9 @@
+## 0.9.1
+
+`2018-01-03`
+
+- [fix]: user webpack.config.resolve.alias first
+
 ## 0.9.0
 
 `2017-07-14`
