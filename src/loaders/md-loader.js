@@ -17,7 +17,7 @@ const util = require('../utils');
 function calculateHtmlPath(cwd, source) {
   const selfPath = path.relative(cwd, source);
   return path.join(path.dirname(selfPath),
-  `${path.basename(selfPath, path.extname(selfPath))}.html`);
+    `${path.basename(selfPath, path.extname(selfPath))}.html`);
 }
 
 module.exports = function (content) {
@@ -38,17 +38,19 @@ module.exports = function (content) {
   this.addDependency(tpl);
 
   const hasCommon = options.plugins.some(i => i instanceof webpack.optimize.CommonsChunkPlugin);
+  const filename = loaderUtils.interpolateName(this, options.output.filename, {})
+    || `${resource.name}.js`;
 
   const scripts = [
     ...(hasCommon ? [path.relative(resourcePath, path.join(resource.demoPath, 'common.js'))] : []),
-    `${resource.name}.js`,
+    filename,
   ];
 
   const link = {};
   link.Index = path.relative('../', path.relative(resource.path, './index'));
   Object.keys(options.entry).forEach(key => {
     link[path.relative(options.demoSource, key)] = path.relative('../',
-    path.relative(resource.path, key));
+      path.relative(resource.path, key));
   });
 
   const result = ejs.render(fs.readFileSync(tpl, 'utf-8'), {
