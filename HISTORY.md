@@ -1,3 +1,9 @@
+## 0.9.2
+
+`2018-03-21`
+
+- [fix]: parse filename user loaderUtils
+
 ## 0.9.1
 
 `2018-01-03`
